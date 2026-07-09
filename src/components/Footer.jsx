@@ -39,7 +39,7 @@ export default function Footer() {
             <a href={ORG.site} target="_blank" rel="noreferrer">
               feathered-friends.com
             </a>
-            .
+            . Volunteers: <a href="#/team">team portal</a>.
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ORG } from '../lib/flock.js';
+import { useNotice } from '../lib/db.js';
 
 const NAV = [
   { href: '#/adopt', route: '/adopt', label: 'Adopt' },
@@ -41,6 +42,7 @@ export default function Header({ route }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false); // mobile menu
   const [drop, setDrop] = useState(null); // open dropdown label
+  const notice = useNotice(ORG.notice); // team-managed; null = hidden
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -56,12 +58,14 @@ export default function Header({ route }) {
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''} ${open ? 'menu-open' : ''}`}>
-      <a className="notice-bar" href={`mailto:${ORG.email}?subject=${encodeURIComponent('Visit request')}`}>
-        <svg viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
-          <path d="M2 14 Q7 4 12 12 Q17 4 22 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-        </svg>
-        {ORG.notice}
-      </a>
+      {notice && (
+        <a className="notice-bar" href={`mailto:${ORG.email}?subject=${encodeURIComponent('Visit request')}`}>
+          <svg viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
+            <path d="M2 14 Q7 4 12 12 Q17 4 22 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          </svg>
+          {notice}
+        </a>
+      )}
       <div className="header-rail">
         <a className="brand" href="#/" aria-label="Feathered Friends Sanctuary and Rescue — home">
           <img src="/logo-seal.svg" alt="" width="52" height="52" />

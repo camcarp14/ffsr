@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BIRDS as SNAPSHOT } from './birds.js';
+import { MODE, db } from './db.js';
 
 /* ============================================================
    LIVE FLOCK HOOK — asks /api/birds (a cached serverless scrape
@@ -96,15 +97,32 @@ let sharedPromise = null;
 const loadFlock = () => {
   if (shared) return Promise.resolve(shared);
   if (!sharedPromise) {
-    sharedPromise = fetch('/api/birds')
-      .then((r) => {
-        if (!r.ok) throw new Error('api ' + r.status);
-        return r.json();
-      })
-      .then((data) => {
-        if (!data.birds?.length) throw new Error('empty');
-        shared = { birds: enrich(data.birds), live: true };
-        return shared;
+    /* Once Supabase is connected, birds managed in the Team Portal become
+       the source of truth; otherwise we sync from feathered-friends.com. */
+    const fromPortal =
+      MODE === 'supabase'
+        ? db
+            .list('birds')
+            .then((rows) => rows.filter((b) => b.status === 'available'))
+            .catch(() => [])
+        : Promise.resolve([]);
+
+    sharedPromise = fromPortal
+      .then((portalBirds) => {
+        if (portalBirds.length > 0) {
+          shared = { birds: enrich(portalBirds), live: true };
+          return shared;
+        }
+        return fetch('/api/birds')
+          .then((r) => {
+            if (!r.ok) throw new Error('api ' + r.status);
+            return r.json();
+          })
+          .then((data) => {
+            if (!data.birds?.length) throw new Error('empty');
+            shared = { birds: enrich(data.birds), live: true };
+            return shared;
+          });
       })
       .catch(() => {
         shared = { birds: SNAPSHOT_ENRICHED, live: false };

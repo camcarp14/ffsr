@@ -1,14 +1,16 @@
 import { ORG } from '../lib/flock.js';
 import { useReveal } from '../lib/motion.js';
+import { useRates } from '../lib/db.js';
 
-const BOARDING_RATES = [
+const DEFAULT_RATES = [
   { price: 15, per: '/day', who: 'Budgies, parakeets, cockatiels, parrotlets, conures, Senegals…' },
   { price: 20, per: '/day', who: 'Amazons, greys, eclectus, Alexandrines…' },
   { price: 30, per: '/day', who: 'Macaws, cockatoos…' },
 ];
 
 export default function Boarding() {
-  const ref = useReveal();
+  const rates = useRates(DEFAULT_RATES); // team-managed, with fallback
+  const ref = useReveal([rates.length]);
 
   return (
     <div className="page-boarding" ref={ref}>
@@ -39,8 +41,8 @@ export default function Boarding() {
           </h2>
           <div className="boarding-grid">
             <div className="boarding-rates stagger">
-              {BOARDING_RATES.map((r) => (
-                <div className="rate" key={r.price}>
+              {rates.map((r) => (
+                <div className="rate" key={r.id || r.price}>
                   <span className="rate-price num">
                     ${r.price}
                     <em>{r.per}</em>

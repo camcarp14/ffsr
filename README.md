@@ -52,6 +52,28 @@ npm run build     # production bundle in dist/
 Deployed on Netlify: build runs `npm run build`, publishes `dist/`, and
 serves `/api/birds` through the function redirect in `netlify.toml`.
 
+## The Team Portal (`/#/team`)
+
+A volunteer dashboard in the same design language — linked discreetly in
+the footer. Tabs: Overview, Birds (with a live preview of the public card
+as you type, photo upload, and a confetti-firing "Mark adopted" button),
+Events (feed the public Events page), Notice bar, Boarding rates, Happy
+landings, and Settings.
+
+It runs in two modes:
+
+- **Demo (default)** — no setup, a labeled "bypass" button instead of a
+  login, and every feature works with changes saved to that browser only.
+- **Supabase** — create a free project, run `supabase/schema.sql`, set
+  `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` (see `.env.example`),
+  and redeploy. The bypass becomes a magic-link sign-in gated by a
+  `volunteers` allowlist table, row-level security enforces writes
+  server-side, and portal-managed birds/events/notices/rates become the
+  live content of the public site.
+
+The portal is code-split: public visitors never download it, and the
+Supabase client only loads when configured.
+
 ## Honesty notes
 
 Contact details, mission language, policies, boarding rates, form links, and

@@ -1,5 +1,6 @@
 import { ORG } from '../lib/flock.js';
 import { useReveal } from '../lib/motion.js';
+import { useUpcomingEvents } from '../lib/db.js';
 
 /* ============================================================
    EVENTS — the sanctuary announces everything on Facebook
@@ -47,7 +48,8 @@ const KINDS = [
 ];
 
 export default function Events() {
-  const ref = useReveal();
+  const upcoming = useUpcomingEvents(); // posted by volunteers in the team portal
+  const ref = useReveal([upcoming.length]);
   return (
     <div className="page-events" ref={ref}>
       <section className="page-head page-head-dark">
@@ -69,6 +71,31 @@ export default function Events() {
       <section className="events-body">
         <div className="rail events-grid">
           <div className="events-info">
+            {upcoming.length > 0 && (
+              <div className="upcoming-block" data-reveal>
+                <h2>Mark your calendar</h2>
+                <ul className="upcoming-list">
+                  {upcoming.map((e) => (
+                    <li key={e.id}>
+                      <span className="upcoming-when num">
+                        {new Date(e.starts_at).toLocaleDateString('en-US', {
+                          weekday: 'short',
+                          month: 'short',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        })}
+                      </span>
+                      <div>
+                        <strong>{e.title}</strong>
+                        <p>{e.blurb}</p>
+                        <em>{e.location}</em>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <h2 data-reveal>The usual suspects</h2>
             <div className="event-kinds stagger">
               {KINDS.map((k) => (
