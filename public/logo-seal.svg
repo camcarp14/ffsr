@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Feathered Friends Sanctuary and Rescue, Inc. Established 2000">
+  <defs>
+    <path id="arcTop" d="M 81 256 A 175 175 0 0 1 431 256"/>
+    <path id="arcBot" d="M 58 256 A 198 198 0 0 0 454 256"/>
+  </defs>
+
+  <!-- seal field + rings -->
+  <circle cx="256" cy="256" r="244" fill="#FAF5EA"/>
+  <circle cx="256" cy="256" r="244" fill="none" stroke="#17453C" stroke-width="24"/>
+  <circle cx="256" cy="256" r="225" fill="none" stroke="#17453C" stroke-width="2.5" opacity=".85"/>
+
+  <!-- arc lettering -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="bold" fill="#17453C" letter-spacing="2">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">Feathered Friends</textPath>
+  </text>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="bold" fill="#17453C" letter-spacing="3.5">
+    <textPath href="#arcBot" startOffset="50%" text-anchor="middle">SANCTUARY &amp; RESCUE, INC.</textPath>
+  </text>
+  <text x="256" y="398" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="bold" fill="#17453C" letter-spacing="3" text-anchor="middle">EST. 2000</text>
+
+  <!-- branch -->
+  <path d="M 146 300 C 200 288, 312 278, 376 284 C 381 284.5, 381 291, 376 291 C 312 286, 202 296, 148 308 C 143 309, 141 301, 146 300 Z" fill="#A98B66"/>
+  <path d="M 318 288 C 340 291, 358 297, 372 305 C 375 307, 373 312, 370 310 C 355 303, 338 297, 317 294 Z" fill="#BFA37E"/>
+
+  <!-- ============ LEFT BIRD: blue macaw, facing right ============ -->
+  <g>
+    <!-- tail plumes: sweep down-left from rump -->
+    <path d="M 206 258 C 196 290, 178 326, 154 352 C 150 356, 155 362, 159 358 C 184 332, 202 296, 212 264 Z" fill="#2456A8"/>
+    <path d="M 210 262 C 205 296, 194 334, 176 364 C 173 369, 179 373, 182 368 C 200 338, 211 298, 216 266 Z" fill="#7FA8E0"/>
+    <path d="M 215 264 C 213 298, 208 340, 198 372 C 196 377, 203 379, 205 374 C 215 342, 220 300, 221 268 Z" fill="#3E6FBE"/>
+    <!-- wing sweeps: shoulder down-left -->
+    <path d="M 207 176 C 190 200, 170 236, 156 268 C 154 273, 160 276, 163 271 C 177 240, 194 208, 212 184 Z" fill="#7FA8E0"/>
+    <path d="M 212 184 C 197 210, 180 246, 168 282 C 166 287, 173 290, 175 285 C 188 250, 202 218, 217 192 Z" fill="#2456A8"/>
+    <path d="M 217 192 C 205 220, 192 258, 184 296 C 183 301, 190 303, 192 298 C 200 262, 210 226, 222 200 Z" fill="#1A3F7E"/>
+    <!-- body: chest to the right, back to the left -->
+    <path d="M 218 116
+             C 202 118, 194 132, 196 146
+             C 197 154, 201 161, 207 166
+             C 200 186, 197 214, 201 240
+             C 203 256, 208 270, 214 280
+             C 218 286, 227 285, 230 278
+             C 238 258, 241 226, 237 196
+             C 235 180, 231 168, 226 160
+             C 234 156, 239 148, 239 138
+             C 239 125, 230 115, 218 116 Z" fill="#2456A8"/>
+    <!-- lighter chest sliver facing center -->
+    <path d="M 226 170 C 233 186, 236 212, 233 238 C 231 256, 227 268, 222 276 C 228 274, 234 264, 237 246 C 241 222, 238 190, 231 172 Z" fill="#7FA8E0" opacity=".7"/>
+    <!-- head -->
+    <circle cx="219" cy="141" r="25" fill="#2456A8"/>
+    <!-- crown sheen -->
+    <path d="M 202 128 C 208 118, 222 114, 232 120 C 224 118, 212 121, 205 130 Z" fill="#7FA8E0"/>
+    <!-- white face patch -->
+    <ellipse cx="233" cy="145" rx="11" ry="12" fill="#FAF5EA"/>
+    <!-- eye -->
+    <circle cx="231" cy="142" r="3.6" fill="#101820"/>
+    <circle cx="232.3" cy="140.7" r="1.1" fill="#FFFFFF"/>
+    <!-- beak: compact hook, pointing down-inward -->
+    <path d="M 235 129
+             C 243 125, 250 130, 252 139
+             C 253 149, 249 160, 242 167
+             C 239 169, 237 167, 239 163
+             C 242 156, 242 148, 239 143
+             C 236 138, 234 133, 235 129 Z" fill="#101820"/>
+    <!-- feet -->
+    <path d="M 214 280 l -2 9 m 7 -8 l 0 9 m 7 -9 l 2 9" stroke="#4A5550" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- ============ RIGHT BIRD: scarlet macaw, facing left ============ -->
+  <g>
+    <!-- tail plumes: sweep down-right -->
+    <path d="M 306 260 C 316 292, 334 328, 358 352 C 362 356, 357 362, 353 358 C 328 332, 310 298, 300 266 Z" fill="#C43A2A"/>
+    <path d="M 302 264 C 307 298, 318 336, 336 364 C 339 369, 333 373, 330 368 C 312 338, 301 300, 296 268 Z" fill="#2456A8"/>
+    <path d="M 297 266 C 299 300, 304 342, 314 372 C 316 377, 309 379, 307 374 C 297 344, 292 302, 291 270 Z" fill="#C43A2A"/>
+    <!-- wing sweeps: shoulder down-right, gold + blue tips -->
+    <path d="M 305 178 C 322 202, 342 238, 356 270 C 358 275, 352 278, 349 273 C 335 242, 318 210, 300 186 Z" fill="#E8A33D"/>
+    <path d="M 300 186 C 315 212, 332 248, 344 284 C 346 289, 339 292, 337 287 C 324 252, 310 220, 295 194 Z" fill="#E8A33D"/>
+    <path d="M 295 194 C 307 222, 320 260, 328 298 C 329 303, 322 305, 320 300 C 312 264, 302 228, 290 202 Z" fill="#2456A8"/>
+    <!-- body -->
+    <path d="M 294 118
+             C 310 120, 318 134, 316 148
+             C 315 156, 311 163, 305 168
+             C 312 188, 315 216, 311 242
+             C 309 258, 304 272, 298 282
+             C 294 288, 285 287, 282 280
+             C 274 260, 271 228, 275 198
+             C 277 182, 281 170, 286 162
+             C 278 158, 273 150, 273 140
+             C 273 127, 282 117, 294 118 Z" fill="#C43A2A"/>
+    <!-- lighter chest sliver facing center -->
+    <path d="M 286 172 C 279 188, 276 214, 279 240 C 281 258, 285 270, 290 278 C 284 276, 278 266, 275 248 C 271 224, 274 192, 281 174 Z" fill="#E05A3A" opacity=".8"/>
+    <!-- head -->
+    <circle cx="293" cy="143" r="25" fill="#C43A2A"/>
+    <!-- crown sheen -->
+    <path d="M 310 130 C 304 120, 290 116, 280 122 C 288 120, 300 123, 307 132 Z" fill="#E05A3A"/>
+    <!-- white face patch -->
+    <ellipse cx="279" cy="147" rx="11" ry="12" fill="#FAF5EA"/>
+    <!-- eye -->
+    <circle cx="281" cy="144" r="3.6" fill="#101820"/>
+    <circle cx="279.7" cy="142.7" r="1.1" fill="#FFFFFF"/>
+    <!-- beak: compact hook, pointing down-inward -->
+    <path d="M 277 131
+             C 269 127, 262 132, 260 141
+             C 259 151, 263 162, 270 169
+             C 273 171, 275 169, 273 165
+             C 270 158, 270 150, 273 145
+             C 276 140, 278 135, 277 131 Z" fill="#101820"/>
+    <!-- feet -->
+    <path d="M 298 282 l 2 9 m -7 -8 l 0 9 m -7 -9 l -2 9" stroke="#4A5550" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
