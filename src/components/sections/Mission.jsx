@@ -1,4 +1,5 @@
 import { useReveal, useCountUp } from '../../lib/motion.js';
+import { BIRDS } from '../../lib/birds.js';
 
 function Stat({ value, suffix, label, delay }) {
   const [ref, display] = useCountUp(value);
@@ -28,21 +29,21 @@ export default function Mission() {
         <div className="mission-body" data-reveal style={{ '--d': '260ms' }}>
           <p>
             Since 2000, Feathered Friends has been a safe haven for parrots living in
-            captivity — the loud ones, the plucked ones, the sweet ones whose people
-            simply couldn't keep the promise. Our mission is plain: give these
+            captivity — with proper veterinary care, good nutrition, big clean spaces,
+            and company that understands them. Our mission is plain: give these
             beautiful, intelligent beings <strong>a life worth living</strong>.
           </p>
           <p>
             Some of our birds go home with carefully matched families. Some live out
-            their whole long lives here, in sanctuary. Either way, nobody gets given
-            up on twice.
+            their whole long lives here, in sanctuary. Nobody profits, nobody rushes,
+            and nobody gets given up on twice.
           </p>
         </div>
         <div className="stats">
           <Stat value={26} suffix="" label="years of rescue in Edgerton, Wisconsin" delay={0} />
-          <Stat value={80} suffix="" label="years a macaw can live — longer than most marriages" delay={120} />
-          <Stat value={120} suffix=" dB" label="how loud a cockatoo gets. Front-row-of-a-concert loud" delay={240} />
-          <Stat value={0} suffix="" label="birds we will ever give up on" delay={360} />
+          <Stat value={BIRDS.length} suffix="" label="birds in residence right now, each with a story" delay={120} />
+          <Stat value={0} suffix="" label="paid staff — every hand here belongs to a volunteer" delay={240} />
+          <Stat value={100} suffix="%" label="funded by donations and adoption fees. That's it" delay={360} />
         </div>
       </div>
     </section>

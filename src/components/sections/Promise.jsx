@@ -9,8 +9,7 @@ const DB_SCALE = [
   { label: 'Rock concert', db: 110 },
 ];
 
-const fmtMoney = (n) =>
-  '$' + Math.round(n).toLocaleString('en-US');
+const fmtMoney = (n) => '$' + Math.round(n).toLocaleString('en-US');
 
 export default function Promise() {
   const ref = useReveal();
@@ -49,7 +48,7 @@ export default function Promise() {
 
   return (
     <section className="promise" id="promise" ref={ref}>
-      {/* perch line: the flock settles in for the serious talk */}
+      {/* perch line: the flock settles in for the planning talk */}
       <svg className="perch-line" viewBox="0 0 1200 60" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
         <path d="M0 52 C 300 44, 900 44, 1200 52" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         <g fill="currentColor">
@@ -67,16 +66,16 @@ export default function Promise() {
       </svg>
       <div className="rail">
         <p className="kicker" data-reveal>
-          The honest part
+          Know before you fall in love
         </p>
         <div className="promise-heading" data-reveal style={{ '--d': '120ms' }}>
           <h2>
-            The forever math<em>.</em>
+            The long, happy math<em>.</em>
           </h2>
           <p>
-            Pet stores sell parrots like houseplants. We'd rather show you the
-            arithmetic — because the number one reason birds land here is that
-            nobody did this math out loud.
+            The best thing about parrots? They stay. For years — sometimes for
+            generations. A little planning up front makes the whole long
+            friendship easy. Play with the numbers:
           </p>
         </div>
 
@@ -85,16 +84,18 @@ export default function Promise() {
             <div className="math-control">
               <span className="math-label">If you fell for a…</span>
               <div className="chip-row" role="group" aria-label="Choose a species">
-                {Object.keys(SPECIES).map((g) => (
-                  <button
-                    key={g}
-                    className={`chip chip-dark ${group === g ? 'chip-on' : ''}`}
-                    aria-pressed={group === g}
-                    onClick={() => setGroup(g)}
-                  >
-                    {g}
-                  </button>
-                ))}
+                {Object.keys(SPECIES)
+                  .filter((g) => SPECIES[g].inMath)
+                  .map((g) => (
+                    <button
+                      key={g}
+                      className={`chip chip-dark ${group === g ? 'chip-on' : ''}`}
+                      aria-pressed={group === g}
+                      onClick={() => setGroup(g)}
+                    >
+                      {g}
+                    </button>
+                  ))}
               </div>
             </div>
             <div className="math-control">
@@ -115,10 +116,12 @@ export default function Promise() {
           <div className="math-verdict" aria-live="polite">
             <p className="verdict-line">
               A {group.toLowerCase()} can share your life for about{' '}
-              <strong className="num">{Math.round(medianTween)} years</strong>. You'd be{' '}
-              <strong className="num">{Math.round(endAgeTween)}</strong> at the end of it
-              {outlives ? ' — ' : '.'}
-              {outlives && <em>which means this bird probably needs a plan for after you.</em>}
+              <strong className="num">{Math.round(medianTween)} years</strong> — you'd be{' '}
+              <strong className="num">{Math.round(endAgeTween)}</strong> with a best friend
+              still calling your name{outlives ? ' ' : '.'}
+              {outlives && (
+                <em>— worth naming a bird guardian in your plans, the way many adopters do.</em>
+              )}
             </p>
           </div>
 
@@ -169,22 +172,22 @@ export default function Promise() {
                   </div>
                 ))}
               </div>
-              <span className="math-card-foot">{sp.dbCompare} — daily, and that's healthy</span>
+              <span className="math-card-foot">{sp.dbCompare} — it's how they say good morning</span>
             </div>
           </div>
         </div>
 
         <div className="promise-close" data-reveal style={{ '--d': '160ms' }}>
           <p>
-            Still here? <em>Good.</em> You might be exactly who somebody upstairs has
-            been waiting for. And if the math says <strong>not yet</strong> — sponsor a
-            sanctuary bird instead. Same love, no drywall damage.
+            However the math shakes out, there's a bird here who fits your
+            life — or a <strong>sponsorship</strong> that fits your heart.
+            <em> Either way, somebody gets loved.</em>
           </p>
           <div className="promise-ctas">
-            <a className="btn btn-gold" href="#flock">
-              Back to the flock
+            <a className="btn btn-gold" href="#/adopt">
+              Meet the birds
             </a>
-            <a className="btn btn-ghost" href="#donate">
+            <a className="btn btn-ghost" href="#/donate">
               Sponsor instead
             </a>
           </div>

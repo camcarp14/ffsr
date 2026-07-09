@@ -8,9 +8,10 @@ import { prefersReducedMotion } from '../lib/motion.js';
    ribbons across the sky, and a gentle aversion to the cursor
    so the flock parts around the visitor's hand.
    ============================================================ */
-const COUNT = 260;
+const COUNT = 150;
 const NEIGHBOR_R = 52;
 const SEP_R = 16;
+const FEATHERS = 10;
 
 export default function Murmuration() {
   const canvasRef = useRef(null);
@@ -73,15 +74,58 @@ export default function Murmuration() {
       ctx.restore();
     };
 
+    /* slow-drifting golden feathers, rocking as they fall */
+    const feathers = Array.from({ length: FEATHERS }, () => ({
+      x: Math.random() * (W || 1200),
+      y: Math.random() * (H || 800),
+      vy: 0.14 + Math.random() * 0.22,
+      sway: Math.random() * Math.PI * 2,
+      swaySp: 0.006 + Math.random() * 0.008,
+      size: 7 + Math.random() * 9,
+      spin: Math.random() * Math.PI,
+    }));
+
+    const drawFeather = (f) => {
+      const rock = Math.sin(f.sway) * 0.6;
+      ctx.save();
+      ctx.translate(f.x + Math.sin(f.sway) * 26, f.y);
+      ctx.rotate(rock + f.spin * 0.2);
+      ctx.globalAlpha = 0.3;
+      ctx.strokeStyle = '#e8a33d';
+      ctx.lineWidth = 1.1;
+      ctx.beginPath(); // quill
+      ctx.moveTo(0, -f.size);
+      ctx.quadraticCurveTo(f.size * 0.2, 0, 0, f.size);
+      ctx.stroke();
+      ctx.globalAlpha = 0.16;
+      ctx.fillStyle = '#f2c14e';
+      ctx.beginPath(); // vane
+      ctx.moveTo(0, -f.size);
+      ctx.quadraticCurveTo(f.size * 0.72, -f.size * 0.15, 0, f.size);
+      ctx.quadraticCurveTo(-f.size * 0.55, -f.size * 0.15, 0, -f.size);
+      ctx.fill();
+      ctx.restore();
+    };
+
     let t = 0;
     const step = () => {
       if (!running) return;
-      t += 0.0035;
+      t += 0.0022;
       // wandering anchor — long slow ribbons
       const ax = W * (0.5 + 0.34 * Math.sin(t * 1.7) + 0.08 * Math.sin(t * 4.3));
       const ay = H * (0.38 + 0.22 * Math.sin(t * 2.3 + 1.7) + 0.06 * Math.cos(t * 5.1));
 
       ctx.clearRect(0, 0, W, H);
+
+      for (const f of feathers) {
+        f.y += f.vy;
+        f.sway += f.swaySp;
+        if (f.y > H + 20) {
+          f.y = -20;
+          f.x = Math.random() * W;
+        }
+        drawFeather(f);
+      }
 
       for (let i = 0; i < COUNT; i++) {
         const b = boids[i];
@@ -122,7 +166,7 @@ export default function Murmuration() {
         }
         // speed limits
         const sp = Math.hypot(b.vx, b.vy);
-        const maxSp = 1.5 + b.depth * 0.9;
+        const maxSp = 1.15 + b.depth * 0.7;
         if (sp > maxSp) {
           b.vx = (b.vx / sp) * maxSp;
           b.vy = (b.vy / sp) * maxSp;

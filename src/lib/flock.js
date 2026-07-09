@@ -1,8 +1,9 @@
 /* ============================================================
-   THE FLOCK — species knowledge + resident birds.
-   Species numbers (lifespan, cost, decibels) power the honesty
-   interactives. Sources: typical companion-parrot care ranges.
-   Bird listings are sample data for this concept build.
+   SPECIES KNOWLEDGE + ORG FACTS
+   Species numbers (lifespan, cost, decibels) power the
+   planning interactives and Companion Facts labels.
+   Org info, policies, and form links are the real ones from
+   feathered-friends.com.
    ============================================================ */
 
 export const SPECIES = {
@@ -16,6 +17,7 @@ export const SPECIES = {
     daily: '4+ hours of company, every day',
     mess: 4,
     voice: 'Can be heard from the street. Really.',
+    inMath: true,
   },
   Cockatoo: {
     plumage: ['#f4f1e6', '#f2d46a', '#e8a33d'],
@@ -27,6 +29,7 @@ export const SPECIES = {
     daily: '4+ hours of company — they will insist',
     mess: 5,
     voice: 'Among the loudest animals kept as pets. We mean it.',
+    inMath: true,
   },
   'African Grey': {
     plumage: ['#8e9296', '#c6cbce', '#c0432b'],
@@ -38,6 +41,7 @@ export const SPECIES = {
     daily: '3–4 hours of company',
     mess: 3,
     voice: 'Moderate volume — but a world-class mimic of everything you say.',
+    inMath: true,
   },
   Amazon: {
     plumage: ['#3e8e4b', '#b7d34a', '#e8a33d'],
@@ -49,6 +53,7 @@ export const SPECIES = {
     daily: '3–4 hours of company',
     mess: 3,
     voice: 'Opera hour at dawn and dusk, every day.',
+    inMath: true,
   },
   Conure: {
     plumage: ['#3e8e4b', '#e8a33d', '#c0432b'],
@@ -60,6 +65,7 @@ export const SPECIES = {
     daily: '3–4 hours of company',
     mess: 3,
     voice: 'A very big voice in a very small body.',
+    inMath: true,
   },
   Cockatiel: {
     plumage: ['#b9bdbf', '#f2e27a', '#f0a24a'],
@@ -71,6 +77,7 @@ export const SPECIES = {
     daily: '2–3 hours of company',
     mess: 2,
     voice: 'Gentle whistles and contact calls.',
+    inMath: true,
   },
   Parakeet: {
     plumage: ['#4bae5a', '#5ac8e0', '#f2e27a'],
@@ -82,108 +89,80 @@ export const SPECIES = {
     daily: '2–3 hours of company',
     mess: 2,
     voice: 'Cheerful all-day chatter.',
+    inMath: true,
+  },
+  Ringneck: {
+    plumage: ['#4bae5a', '#5ac8e0', '#e05a3a'],
+    lifespan: [25, 30],
+    lifespanLabel: '25–30 years',
+    monthlyCost: [60, 120],
+    decibels: 95,
+    dbCompare: 'a whistling kettle with opinions',
+    daily: '2–3 hours of company',
+    mess: 3,
+    voice: 'Talkative, with a piercing flock call.',
+    inMath: false,
+  },
+  Senegal: {
+    plumage: ['#3e8e4b', '#e8a33d', '#5b6770'],
+    lifespan: [25, 40],
+    lifespanLabel: '25–40 years',
+    monthlyCost: [60, 120],
+    decibels: 75,
+    dbCompare: 'a polite chatterbox',
+    daily: '2–3 hours of company',
+    mess: 2,
+    voice: 'One of the quieter parrots — with chatterbox moments.',
+    inMath: false,
+  },
+  Quaker: {
+    plumage: ['#4bae5a', '#b9bdbf', '#5ac8e0'],
+    lifespan: [20, 30],
+    lifespanLabel: '20–30 years',
+    monthlyCost: [50, 100],
+    decibels: 93,
+    dbCompare: 'a tiny town crier',
+    daily: '2–3 hours of company',
+    mess: 3,
+    voice: 'Busy, chatty, and a gifted little talker.',
+    inMath: false,
+  },
+  Lovebird: {
+    plumage: ['#f2c14e', '#e05a3a', '#4bae5a'],
+    lifespan: [10, 15],
+    lifespanLabel: '10–15 years',
+    monthlyCost: [40, 80],
+    decibels: 83,
+    dbCompare: 'a squeaky-toy chorus',
+    daily: '2 hours of company (more if single)',
+    mess: 2,
+    voice: 'High cheerful chirps, most of the day.',
+    inMath: false,
   },
 };
 
 export const speciesFacts = (group) => SPECIES[group] || SPECIES.Conure;
 
-export const BIRDS = [
-  {
-    id: 'packer',
-    name: 'Packer',
-    species: 'Blue & Gold Macaw',
-    group: 'Macaw',
-    age: 'Adult',
-    sex: 'Male',
-    status: 'available',
-    noise: 5,
-    experience: 'Experienced homes only',
-    goodWith: 'Adults-only or bird-savvy households',
-    monthsWaiting: 7,
-    bio: 'Packer is a big personality in a big blue-and-gold package. He loves fresh chop, wood blocks he can demolish, and announcing dinnertime to the whole building. He is looking for an experienced home that understands macaw volume, macaw beaks, and macaw hearts.',
-  },
-  {
-    id: 'elsa-olaf',
-    name: 'Elsa & Olaf',
-    species: 'Cockatiels · bonded pair',
-    group: 'Cockatiel',
-    age: 'Young adults',
-    sex: 'Pair',
-    status: 'available',
-    noise: 2,
-    experience: 'Beginner-friendly',
-    goodWith: 'First-time bird families',
-    monthsWaiting: 4,
-    bonded: true,
-    bio: 'Elsa and Olaf are a devoted bonded pair who must be adopted together. They whistle duets in the morning, nap on the same perch, and make cockatiel ownership look easy — because together, they mostly are.',
-  },
-  {
-    id: 'gizmo',
-    name: 'Gizmo',
-    species: 'Yellow-Naped Amazon',
-    group: 'Amazon',
-    age: 'Senior',
-    sex: 'Male',
-    status: 'available',
-    noise: 4,
-    experience: 'Some experience',
-    goodWith: 'Patient adults, routine-loving homes',
-    monthsWaiting: 11,
-    bio: 'Gizmo is a distinguished older gentleman with an impressive vocabulary and strong opinions about breakfast. Senior parrots like Gizmo are the best-kept secret in rescue: settled, communicative, and deeply grateful for a routine.',
-  },
-  {
-    id: 'morgan',
-    name: 'Morgan',
-    species: 'Green-Cheek Conure',
-    group: 'Conure',
-    age: 'Adult',
-    sex: 'Female',
-    status: 'available',
-    noise: 2,
-    experience: 'Some experience',
-    goodWith: 'Attentive adults',
-    monthsWaiting: 14,
-    bio: 'Morgan is a pocket-sized clown who wants to be involved in everything you do. Green cheeks are quieter than most conures, but Morgan still needs several hours of out-of-cage time and a human who laughs at her jokes.',
-  },
-  {
-    id: 'cleo',
-    name: 'Cleo',
-    species: 'Umbrella Cockatoo',
-    group: 'Cockatoo',
-    age: 'Adult',
-    sex: 'Female',
-    status: 'sanctuary',
-    noise: 5,
-    experience: 'Sanctuary resident',
-    goodWith: 'Sponsors — she keeps our volunteers humble',
-    monthsWaiting: 0,
-    bio: 'Cleo is one of our permanent sanctuary residents — she will live out her whole long life here, loved and loud. You can be part of that life by sponsoring her care.',
-  },
-  {
-    id: 'juno',
-    name: 'Juno',
-    species: 'Congo African Grey',
-    group: 'African Grey',
-    age: 'Adult',
-    sex: 'Female',
-    status: 'available',
-    noise: 3,
-    experience: 'Experienced homes only',
-    goodWith: 'Calm households that talk to her like a person',
-    monthsWaiting: 9,
-    bio: 'Juno knows forty-one words and uses them with intent. She asks the room "you okay?" when someone sneezes. Greys bond deeply and think constantly — Juno needs a home that treats her mind as seriously as her wings.',
-  },
-];
-
+/* Real adopted birds from the sanctuary's success-stories page */
 export const HAPPY_LANDINGS = [
-  { name: 'Sunny', species: 'Sun Conure', town: 'Madison' },
-  { name: 'Pistachio', species: 'Cockatiel', town: 'Janesville' },
-  { name: 'Kiwi', species: 'Parakeet', town: 'Fort Atkinson' },
-  { name: 'Rio', species: 'Amazon', town: 'Milwaukee' },
-  { name: 'Baby', species: 'Cockatoo', town: 'Stoughton' },
-  { name: 'Merlin', species: 'African Grey', town: 'Verona' },
-  { name: 'Peaches', species: 'Conure', town: 'Whitewater' },
-  { name: 'Ziggy', species: 'Cockatiel', town: 'Oregon' },
+  'Johnny & June',
+  'OB',
+  'Inga',
+  'Ruby',
+  'Grace & Frankie',
+  'Larry Bird',
+  'Misty',
+  'Cheeto',
+  'Fiona',
+  'Chilly',
+  'Vincent',
+  'Pip Squeak',
+  'Penny & Charlie',
+  'Louie',
+  'Walter & Skye',
+  'Packer',
+  'Cranberry',
+  'Akio',
 ];
 
 export const ORG = {
@@ -197,4 +176,16 @@ export const ORG = {
   donateUrl: 'https://www.paypal.com/donate/?hosted_button_id=Y5DW68FD7QJVS',
   facebook: 'https://www.facebook.com/Feathered-Friends-Sanctuary-Rescue-171994686190287/',
   site: 'https://www.feathered-friends.com',
+  notice: 'Open by appointment only — email us to schedule a visit',
+  radiusNote: 'Adoptions are limited to homes within a two-hour drive of Edgerton, WI — the visits matter that much.',
+  forms: {
+    adoption:
+      'https://docs.google.com/forms/d/e/1FAIpQLSfZdMz6i1gzeJaQDzB5pyejwxNjkW3T9p465aEYKQE5VZoBkQ/viewform',
+    surrender:
+      'https://docs.google.com/forms/d/e/1FAIpQLSdd1WCpXHwQ9P8BfP578qyP0uQgj3F1LeOqy6Dbxw7dnnmCYA/viewform',
+    boarding:
+      'https://docs.google.com/forms/d/e/1FAIpQLScEDELU4xsTI4Qg_yKtyB3gsS2eO5hsTac7PbPGzTYo7rQySw/viewform',
+    volunteer:
+      'https://docs.google.com/forms/d/e/1FAIpQLScjfnq1ClBtcXeBjRubWcktS2Y93sV6okhMgras33WLj7w_aA/viewform',
+  },
 };

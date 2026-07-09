@@ -10,14 +10,17 @@ export default function Footer() {
             {ORG.name}
             <br />
             {ORG.address}
+            <br />
+            <a href={`mailto:${ORG.email}`}>{ORG.email}</a>
           </p>
         </div>
         <nav className="footer-nav" aria-label="Footer">
-          <a href="#flock">Adopt</a>
-          <a href="#promise">The honest part</a>
-          <a href="#donate">Donate</a>
-          <a href="#involved">Volunteer</a>
-          <a href="#visit">Visit</a>
+          <a href="#/adopt">Adopt</a>
+          <a href="#/about">About</a>
+          <a href="#/faq">FAQ</a>
+          <a href="#/get-involved">Volunteer</a>
+          <a href="#/forms">Forms</a>
+          <a href="#/donate">Donate</a>
           <a href={ORG.facebook} target="_blank" rel="noreferrer">
             Facebook
           </a>
@@ -25,11 +28,11 @@ export default function Footer() {
         <div className="footer-meta">
           <p>
             A 501(c)(3) nonprofit giving captive parrots{' '}
-            <em>a life worth living</em> since {ORG.est}.
+            <em>a life worth living</em> since {ORG.est}. No paid staff — every
+            hand here is a volunteer's.
           </p>
           <p className="footer-fine">
-            Concept redesign crafted with Claude. Bird listings are sample data —
-            the real flock lives at{' '}
+            Concept redesign crafted with Claude. Bird listings sourced from{' '}
             <a href={ORG.site} target="_blank" rel="noreferrer">
               feathered-friends.com
             </a>

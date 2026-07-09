@@ -1,8 +1,11 @@
-# Feathered Friends Sanctuary & Rescue — "A Life Worth Living" (v3 concept)
+# Feathered Friends Sanctuary & Rescue — "A Life Worth Living"
 
-A cinematic, single-page concept site for [Feathered Friends Sanctuary &
-Rescue](https://www.feathered-friends.com) (Edgerton, WI — est. 2000), designed
-to do three jobs in one scroll:
+A cinematic concept site for [Feathered Friends Sanctuary &
+Rescue](https://www.feathered-friends.com) (Edgerton, WI — est. 2000).
+Six pages — Home, Adopt, About, FAQ, Get Involved, Forms — carrying the
+sanctuary's real content: all 33 available birds with their real photos and
+volunteer-written bios, the real adoption process and policies, real boarding
+rates, and the organization's actual Google Forms. Designed to do three jobs:
 
 1. **Drive adoptions** — but honestly. Bird cards lead with volume, lifespan,
    and experience level, and the adoption CTA is gated behind three plain-English

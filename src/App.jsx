@@ -1,31 +1,47 @@
+import { useEffect } from 'react';
+import { useRoute } from './lib/router.js';
 import Header from './components/Header.jsx';
-import Hero from './components/sections/Hero.jsx';
-import Landings from './components/sections/Landings.jsx';
-import Mission from './components/sections/Mission.jsx';
-import Flock from './components/sections/Flock.jsx';
-import Promise from './components/sections/Promise.jsx';
-import Donate from './components/sections/Donate.jsx';
-import Involved from './components/sections/Involved.jsx';
-import Visit from './components/sections/Visit.jsx';
 import Footer from './components/Footer.jsx';
+import Home from './pages/Home.jsx';
+import Adopt from './pages/Adopt.jsx';
+import About from './pages/About.jsx';
+import Faq from './pages/Faq.jsx';
+import GetInvolved from './pages/GetInvolved.jsx';
+import FormsPage from './pages/FormsPage.jsx';
+
+const PAGES = {
+  '/': Home,
+  '/adopt': Adopt,
+  '/about': About,
+  '/faq': Faq,
+  '/get-involved': GetInvolved,
+  '/forms': FormsPage,
+};
 
 export default function App() {
+  const route = useRoute();
+  const donate = route === '/donate';
+  const Page = donate ? Home : PAGES[route] || Home;
+
+  useEffect(() => {
+    if (donate) {
+      requestAnimationFrame(() =>
+        document.getElementById('donate')?.scrollIntoView({ behavior: 'auto' })
+      );
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [route, donate]);
+
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
       <div className="grain" aria-hidden="true" />
-      <Header />
-      <main id="main">
-        <Hero />
-        <Landings />
-        <Mission />
-        <Flock />
-        <Promise />
-        <Donate />
-        <Involved />
-        <Visit />
+      <Header route={route} />
+      <main id="main" className="pagefade" key={donate ? '/' : route}>
+        <Page />
       </main>
       <Footer />
     </>
