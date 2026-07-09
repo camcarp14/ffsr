@@ -229,7 +229,7 @@
 /* ---------- mission ---------- */
 .mission {
   background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
-  padding-block: clamp(6rem, 12vw, 10rem) clamp(5rem, 9vw, 8rem);
+  padding-block: clamp(3.5rem, 7vw, 6rem) clamp(5rem, 9vw, 8rem);
   color: var(--ink);
 }
 .mission .kicker {

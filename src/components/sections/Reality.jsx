@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { SPECIES } from '../../lib/flock.js';
 import { useReveal, useTween } from '../../lib/motion.js';
 import { FeatherMeter } from '../FeatherMeter.jsx';
+import { PerchHang } from '../PerchFlock.jsx';
 
 /* ============================================================
    REALITY — "what a parrot actually asks of you."
@@ -101,23 +102,7 @@ export default function Reality() {
 
   return (
     <section className="reality" id="reality" ref={ref}>
-      {/* perch line: the flock settles in for the honest talk */}
-      <svg className="perch-line" viewBox="0 0 1200 60" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-        <path d="M0 52 C 300 44, 900 44, 1200 52" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <g fill="currentColor">
-          <path d="M 178 46 c 0 -10 5 -16 11 -16 c 7 0 10 6 9 13 c 3 -2 5 -1 6 1 c -3 1 -5 2 -7 5 c -4 4 -12 4 -19 -3 z" />
-          <path d="M 480 45 c -1 -13 6 -20 13 -20 c 8 0 12 8 11 16 c 3 -2 6 -1 7 2 c -4 1 -6 2 -9 6 c -5 5 -15 4 -22 -4 z" />
-          <path d="M 704 46 c 0 -9 4 -14 10 -14 c 6 0 9 5 8 11 c 3 -1 5 0 5 2 c -3 1 -4 2 -6 4 c -4 4 -11 3 -17 -3 z" />
-          <path d="M 1010 45 c -1 -11 5 -17 11 -17 c 7 0 11 7 10 14 c 3 -2 5 -1 6 1 c -3 1 -5 3 -8 5 c -4 4 -13 4 -19 -3 z" />
-        </g>
-        <g stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none">
-          <path d="M 182 46 l -17 11" />
-          <path d="M 484 45 l -19 13" />
-          <path d="M 708 46 l -15 10" />
-          <path d="M 1014 45 l -18 12" />
-        </g>
-      </svg>
-
+      <PerchHang className="perch-art reality-perch" data-reveal="scale" />
       <div className="rail">
         <p className="kicker" data-reveal>
           The honest part, made simple

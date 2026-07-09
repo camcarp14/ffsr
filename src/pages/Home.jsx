@@ -1,5 +1,4 @@
 import Hero from '../components/sections/Hero.jsx';
-import Landings from '../components/sections/Landings.jsx';
 import Mission from '../components/sections/Mission.jsx';
 import Featured from '../components/sections/Featured.jsx';
 import Reality from '../components/sections/Reality.jsx';
@@ -10,7 +9,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Landings />
       <Mission />
       <Featured />
       <Reality />

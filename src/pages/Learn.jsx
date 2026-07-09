@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { LEARN, SAFE_FOODS, TOXIC_FOODS, VETS, SOURCES } from '../lib/learn.js';
 import { ORG } from '../lib/flock.js';
 import { useReveal } from '../lib/motion.js';
+import { PerchSleepy } from '../components/PerchFlock.jsx';
 
 /* ============================================================
    LEARN — the education hub. Sticky section nav with scrollspy,
@@ -67,6 +68,7 @@ export default function Learn() {
             <a className="learn-nav-cta btn btn-ink" href="#/adopt">
               Meet the birds
             </a>
+            <PerchSleepy className="perch-art learn-perch" />
           </nav>
 
           <div className="learn-content">

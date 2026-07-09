@@ -75,12 +75,6 @@ export default function Hero() {
           ))}
         </div>
       </div>
-      <a className="scroll-cue" href="#mission" data-reveal="fade" style={{ '--d': '1400ms' }} aria-label="Scroll to content">
-        <span>Come down to the perches</span>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-          <path d="M12 4v15m0 0l-6-6m6 6l6-6" />
-        </svg>
-      </a>
       <Wave color="var(--cream)" className="hero-wave" />
     </section>
   );

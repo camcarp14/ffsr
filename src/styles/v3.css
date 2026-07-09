@@ -601,3 +601,52 @@
     padding: 1.2rem;
   }
 }
+
+/* ---------- perch flock (cute cartoon birds) ---------- */
+.perch-art {
+  display: block;
+  height: auto;
+  pointer-events: none;
+}
+.mission {
+  position: relative;
+}
+.mission-perch {
+  position: absolute;
+  top: -38px;
+  right: 0;
+  width: min(400px, 44vw);
+  z-index: 3;
+}
+.reality-perch {
+  position: absolute;
+  top: -52px;
+  left: clamp(0rem, 4vw, 4rem);
+  width: min(330px, 42vw);
+  z-index: 3;
+}
+.learn-perch {
+  width: 160px;
+  margin: 1.2rem auto 0;
+  opacity: 0.95;
+}
+.footer-brand {
+  position: relative;
+}
+.footer-sitter {
+  position: absolute;
+  top: -61px;
+  left: 19px;
+  width: 44px;
+}
+
+@media (max-width: 640px) {
+  .mission-perch {
+    width: 52vw;
+    top: -26px;
+  }
+  .reality-perch {
+    width: 54vw;
+    top: -34px;
+  }
+}
