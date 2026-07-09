@@ -3,6 +3,7 @@ import { ORG } from '../lib/flock.js';
 
 const LINKS = [
   { href: '#/adopt', route: '/adopt', label: 'Adopt' },
+  { href: '#/learn', route: '/learn', label: 'Learn' },
   { href: '#/about', route: '/about', label: 'About' },
   { href: '#/faq', route: '/faq', label: 'FAQ' },
   { href: '#/get-involved', route: '/get-involved', label: 'Get involved' },

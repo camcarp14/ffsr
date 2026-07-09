@@ -60,7 +60,7 @@ export default function Murmuration() {
       ctx.translate(b.x, b.y);
       ctx.rotate(angle);
       ctx.globalAlpha = a;
-      ctx.strokeStyle = b.depth > 0.75 ? '#f2c14e' : '#e9e2cf';
+      ctx.strokeStyle = b.depth > 0.75 ? '#ffd06b' : '#f6ead3';
       ctx.lineWidth = Math.max(0.7, s * 0.42);
       ctx.lineCap = 'round';
       // a bird = two arcing wing strokes from a point, "M" silhouette
@@ -91,14 +91,14 @@ export default function Murmuration() {
       ctx.translate(f.x + Math.sin(f.sway) * 26, f.y);
       ctx.rotate(rock + f.spin * 0.2);
       ctx.globalAlpha = 0.3;
-      ctx.strokeStyle = '#e8a33d';
+      ctx.strokeStyle = '#ffb547';
       ctx.lineWidth = 1.1;
       ctx.beginPath(); // quill
       ctx.moveTo(0, -f.size);
       ctx.quadraticCurveTo(f.size * 0.2, 0, 0, f.size);
       ctx.stroke();
       ctx.globalAlpha = 0.16;
-      ctx.fillStyle = '#f2c14e';
+      ctx.fillStyle = '#ffd06b';
       ctx.beginPath(); // vane
       ctx.moveTo(0, -f.size);
       ctx.quadraticCurveTo(f.size * 0.72, -f.size * 0.15, 0, f.size);

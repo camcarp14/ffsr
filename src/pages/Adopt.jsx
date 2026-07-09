@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { BIRDS } from '../lib/birds.js';
+import { useFlock } from '../lib/useFlock.js';
 import { ORG } from '../lib/flock.js';
 import { useReveal } from '../lib/motion.js';
 import BirdCard from '../components/BirdCard.jsx';
@@ -30,26 +30,41 @@ const STEPS = [
   },
 ];
 
+function SkeletonCard() {
+  return (
+    <div className="bird-card sk-card" aria-hidden="true">
+      <div className="bird-photo sk-shimmer" />
+      <div className="bird-meta">
+        <span className="sk-line sk-shimmer" style={{ width: '46%' }} />
+        <span className="sk-line sk-shimmer" style={{ width: '70%' }} />
+        <span className="sk-line sk-shimmer" style={{ width: '58%' }} />
+      </div>
+    </div>
+  );
+}
+
 export default function Adopt() {
   const [group, setGroup] = useState('All');
   const [query, setQuery] = useState('');
-  const ref = useReveal([group, query]);
+  const { birds, live, loading } = useFlock();
+  const ref = useReveal([group, query, loading]);
   const [openBird, setOpenBird] = useState(null);
 
   const flock = useMemo(() => {
+    if (!birds) return [];
     const q = query.trim().toLowerCase();
-    return BIRDS.filter((b) => {
+    return birds.filter((b) => {
       if (group !== 'All' && b.group !== group) return false;
-      if (q && !(b.name + ' ' + b.species).toLowerCase().includes(q)) return false;
+      if (q && !(b.name + ' ' + (b.species || '')).toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [group, query]);
+  }, [birds, group, query]);
 
   const counts = useMemo(() => {
-    const c = { All: BIRDS.length };
-    for (const b of BIRDS) c[b.group] = (c[b.group] || 0) + 1;
+    const c = { All: birds?.length || 0 };
+    for (const b of birds || []) c[b.group] = (c[b.group] || 0) + 1;
     return c;
-  }, []);
+  }, [birds]);
 
   return (
     <div className="page-adopt" ref={ref}>
@@ -59,7 +74,8 @@ export default function Adopt() {
             Available birds
           </p>
           <h1 data-reveal style={{ '--d': '120ms' }}>
-            {BIRDS.length} birds. <em>One of them is yours.</em>
+            {loading ? 'Counting beaks…' : `${birds.length} birds.`}{' '}
+            <em>One of them is yours.</em>
           </h1>
           <p className="page-lead" data-reveal style={{ '--d': '240ms' }}>
             Every bio below is written by the volunteers who feed, clean, and
@@ -71,6 +87,12 @@ export default function Adopt() {
           </p>
           <p className="page-note" data-reveal style={{ '--d': '340ms' }}>
             {ORG.radiusNote}
+          </p>
+          <p className={`sync-badge ${live ? 'sync-live' : ''}`} data-reveal="fade" style={{ '--d': '440ms' }}>
+            <i aria-hidden="true" />
+            {live
+              ? 'Synced live with feathered-friends.com — updates as birds come and go'
+              : 'Showing our most recent saved listing'}
           </p>
         </div>
       </section>
@@ -106,7 +128,13 @@ export default function Adopt() {
             </label>
           </div>
 
-          {flock.length === 0 ? (
+          {loading ? (
+            <div className="flock-grid" aria-label="Loading birds">
+              {Array.from({ length: 6 }, (_, i) => (
+                <SkeletonCard key={i} />
+              ))}
+            </div>
+          ) : flock.length === 0 ? (
             <div className="flock-empty">
               <p>
                 No birds match that search — but the flock changes all the time.{' '}

@@ -1,5 +1,6 @@
 import { ORG } from '../../lib/flock.js';
 import { useReveal } from '../../lib/motion.js';
+import Wave from '../Wave.jsx';
 
 const TIERS = [
   {
@@ -32,7 +33,7 @@ const TIERS = [
     amount: 120,
     cadence: '/mo',
     name: 'Sanctuary Sponsor',
-    does: 'Full care for a permanent resident like Cleo — food, enrichment, vet fund, and a photo update that will absolutely yell at you.',
+    does: 'Full care for one of our permanent sanctuary residents — food, enrichment, vet fund, and a photo update that will absolutely yell at you.',
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="2.4" />
@@ -87,6 +88,7 @@ export default function Donate() {
           </p>
         </div>
       </div>
+      <Wave color="var(--cream)" className="section-wave" />
     </section>
   );
 }

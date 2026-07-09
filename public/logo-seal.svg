@@ -5,18 +5,18 @@
   </defs>
 
   <!-- seal field + rings -->
-  <circle cx="256" cy="256" r="244" fill="#FAF5EA"/>
-  <circle cx="256" cy="256" r="244" fill="none" stroke="#17453C" stroke-width="24"/>
-  <circle cx="256" cy="256" r="225" fill="none" stroke="#17453C" stroke-width="2.5" opacity=".85"/>
+  <circle cx="256" cy="256" r="244" fill="#FDF4E0"/>
+  <circle cx="256" cy="256" r="244" fill="none" stroke="#075056" stroke-width="24"/>
+  <circle cx="256" cy="256" r="225" fill="none" stroke="#075056" stroke-width="2.5" opacity=".85"/>
 
   <!-- arc lettering -->
-  <text font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="bold" fill="#17453C" letter-spacing="2">
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="bold" fill="#075056" letter-spacing="2">
     <textPath href="#arcTop" startOffset="50%" text-anchor="middle">Feathered Friends</textPath>
   </text>
-  <text font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="bold" fill="#17453C" letter-spacing="3.5">
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="bold" fill="#075056" letter-spacing="3.5">
     <textPath href="#arcBot" startOffset="50%" text-anchor="middle">SANCTUARY &amp; RESCUE, INC.</textPath>
   </text>
-  <text x="256" y="398" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="bold" fill="#17453C" letter-spacing="3" text-anchor="middle">EST. 2000</text>
+  <text x="256" y="398" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="bold" fill="#075056" letter-spacing="3" text-anchor="middle">EST. 2000</text>
 
   <!-- branch -->
   <path d="M 146 300 C 200 288, 312 278, 376 284 C 381 284.5, 381 291, 376 291 C 312 286, 202 296, 148 308 C 143 309, 141 301, 146 300 Z" fill="#A98B66"/>
@@ -50,7 +50,7 @@
     <!-- crown sheen -->
     <path d="M 202 128 C 208 118, 222 114, 232 120 C 224 118, 212 121, 205 130 Z" fill="#7FA8E0"/>
     <!-- white face patch -->
-    <ellipse cx="233" cy="145" rx="11" ry="12" fill="#FAF5EA"/>
+    <ellipse cx="233" cy="145" rx="11" ry="12" fill="#FDF4E0"/>
     <!-- eye -->
     <circle cx="231" cy="142" r="3.6" fill="#101820"/>
     <circle cx="232.3" cy="140.7" r="1.1" fill="#FFFFFF"/>
@@ -93,7 +93,7 @@
     <!-- crown sheen -->
     <path d="M 310 130 C 304 120, 290 116, 280 122 C 288 120, 300 123, 307 132 Z" fill="#E05A3A"/>
     <!-- white face patch -->
-    <ellipse cx="279" cy="147" rx="11" ry="12" fill="#FAF5EA"/>
+    <ellipse cx="279" cy="147" rx="11" ry="12" fill="#FDF4E0"/>
     <!-- eye -->
     <circle cx="281" cy="144" r="3.6" fill="#101820"/>
     <circle cx="279.7" cy="142.7" r="1.1" fill="#FFFFFF"/>

@@ -16,6 +16,7 @@ export default function Footer() {
         </div>
         <nav className="footer-nav" aria-label="Footer">
           <a href="#/adopt">Adopt</a>
+          <a href="#/learn">Learn</a>
           <a href="#/about">About</a>
           <a href="#/faq">FAQ</a>
           <a href="#/get-involved">Volunteer</a>
@@ -28,8 +29,8 @@ export default function Footer() {
         <div className="footer-meta">
           <p>
             A 501(c)(3) nonprofit giving captive parrots{' '}
-            <em>a life worth living</em> since {ORG.est}. No paid staff — every
-            hand here is a volunteer's.
+            <em>a life worth living</em> since {ORG.est}. One paid caretaker,
+            an army of volunteers, and every dollar back to the birds.
           </p>
           <p className="footer-fine">
             Concept redesign crafted with Claude. Bird listings sourced from{' '}

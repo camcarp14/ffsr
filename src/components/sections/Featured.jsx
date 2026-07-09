@@ -1,15 +1,31 @@
 import { useState } from 'react';
-import { BIRDS } from '../../lib/birds.js';
+import { useFlock } from '../../lib/useFlock.js';
 import { useReveal } from '../../lib/motion.js';
 import BirdCard from '../BirdCard.jsx';
 import BirdModal from '../BirdModal.jsx';
 
-const FEATURED = ['koda', 'puddin', 'rio', 'elsa-olaf', 'city', 'boyd-floyd'];
+/* one bird per species group, most variety first, six total */
+function pickFeatured(pool) {
+  const order = ['Macaw', 'Cockatoo', 'Conure', 'Cockatiel', 'Other', 'Amazon', 'Parakeet', 'African Grey'];
+  const picked = [];
+  for (const g of order) {
+    const bird = pool.find((b) => b.group === g && !picked.includes(b));
+    if (bird) picked.push(bird);
+    if (picked.length === 6) return picked;
+  }
+  for (const b of pool) {
+    if (!picked.includes(b)) picked.push(b);
+    if (picked.length === 6) break;
+  }
+  return picked;
+}
 
 export default function Featured() {
   const ref = useReveal();
   const [openBird, setOpenBird] = useState(null);
-  const birds = FEATURED.map((slug) => BIRDS.find((b) => b.slug === slug)).filter(Boolean);
+  const { birds, fallback } = useFlock();
+  const pool = birds || fallback;
+  const six = pickFeatured(pool);
 
   return (
     <section className="flock" id="flock" ref={ref}>
@@ -24,17 +40,17 @@ export default function Featured() {
           <p>
             Every listing tells you the truth — the volume, the years, the
             personality quirks — because the right match never needs a sales
-            pitch. Here are a few of the {BIRDS.length} birds in residence.
+            pitch. Here are a few of the {pool.length} birds in residence.
           </p>
         </div>
         <div className="flock-grid stagger">
-          {birds.map((bird) => (
+          {six.map((bird) => (
             <BirdCard bird={bird} key={bird.slug} onOpen={setOpenBird} />
           ))}
         </div>
         <div className="flock-all" data-reveal>
           <a className="btn btn-ink" href="#/adopt">
-            See all {BIRDS.length} birds →
+            See all {pool.length} birds →
           </a>
         </div>
       </div>

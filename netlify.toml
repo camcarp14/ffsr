@@ -4,3 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/api/birds"
+  to = "/.netlify/functions/birds"
+  status = 200

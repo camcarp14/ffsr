@@ -1,5 +1,6 @@
 import { ORG } from '../../lib/flock.js';
 import { useReveal } from '../../lib/motion.js';
+import Wave from '../Wave.jsx';
 
 export default function Visit() {
   const ref = useReveal();
@@ -79,6 +80,7 @@ export default function Visit() {
           </svg>
         </div>
       </div>
+      <Wave color="var(--night)" className="section-wave" />
     </section>
   );
 }

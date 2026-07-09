@@ -1,5 +1,5 @@
 import { useReveal, useCountUp } from '../../lib/motion.js';
-import { BIRDS } from '../../lib/birds.js';
+import { useFlock } from '../../lib/useFlock.js';
 
 function Stat({ value, suffix, label, delay }) {
   const [ref, display] = useCountUp(value);
@@ -15,7 +15,9 @@ function Stat({ value, suffix, label, delay }) {
 }
 
 export default function Mission() {
-  const ref = useReveal();
+  const { birds, fallback } = useFlock();
+  const count = (birds || fallback).length;
+  const ref = useReveal([count]);
   return (
     <section className="mission" id="mission" ref={ref}>
       <div className="rail">
@@ -41,8 +43,8 @@ export default function Mission() {
         </div>
         <div className="stats">
           <Stat value={26} suffix="" label="years of rescue in Edgerton, Wisconsin" delay={0} />
-          <Stat value={BIRDS.length} suffix="" label="birds in residence right now, each with a story" delay={120} />
-          <Stat value={0} suffix="" label="paid staff — every hand here belongs to a volunteer" delay={240} />
+          <Stat value={count} suffix="" label="birds in residence right now, each with a story" delay={120} />
+          <Stat value={1} suffix="" label="paid caretaker — every other hand belongs to a volunteer" delay={240} />
           <Stat value={100} suffix="%" label="funded by donations and adoption fees. That's it" delay={360} />
         </div>
       </div>

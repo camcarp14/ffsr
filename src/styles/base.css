@@ -183,11 +183,11 @@ button {
 .btn-gold {
   background: var(--gold);
   color: var(--night);
-  box-shadow: 0 8px 30px -10px rgba(232, 163, 61, 0.65);
+  box-shadow: 0 8px 30px -10px rgba(255, 181, 71, 0.65);
 }
 .btn-gold:hover {
   background: var(--gold-bright);
-  box-shadow: 0 14px 40px -10px rgba(232, 163, 61, 0.8);
+  box-shadow: 0 14px 40px -10px rgba(255, 181, 71, 0.8);
 }
 .btn-ghost {
   color: var(--cream);
@@ -200,18 +200,18 @@ button {
 .btn-ink {
   background: var(--pine);
   color: var(--cream);
-  box-shadow: 0 10px 30px -12px rgba(23, 69, 60, 0.6);
+  box-shadow: 0 10px 30px -12px rgba(11, 96, 104, 0.6);
 }
 .btn-ink:hover {
   background: var(--moss);
 }
 .btn-line {
   color: var(--pine);
-  box-shadow: inset 0 0 0 1.5px rgba(23, 69, 60, 0.35);
+  box-shadow: inset 0 0 0 1.5px rgba(11, 96, 104, 0.35);
 }
 .btn-line:hover {
   box-shadow: inset 0 0 0 1.5px var(--pine);
-  background: rgba(23, 69, 60, 0.06);
+  background: rgba(11, 96, 104, 0.06);
 }
 
 /* ---------- shared atoms ---------- */

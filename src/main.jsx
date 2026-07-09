@@ -5,6 +5,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/sections.css';
 import './styles/v2.css';
+import './styles/v3.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

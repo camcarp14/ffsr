@@ -6,12 +6,14 @@ import Home from './pages/Home.jsx';
 import Adopt from './pages/Adopt.jsx';
 import About from './pages/About.jsx';
 import Faq from './pages/Faq.jsx';
+import Learn from './pages/Learn.jsx';
 import GetInvolved from './pages/GetInvolved.jsx';
 import FormsPage from './pages/FormsPage.jsx';
 
 const PAGES = {
   '/': Home,
   '/adopt': Adopt,
+  '/learn': Learn,
   '/about': About,
   '/faq': Faq,
   '/get-involved': GetInvolved,

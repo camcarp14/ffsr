@@ -1,5 +1,5 @@
 import { ORG } from '../lib/flock.js';
-import { BIRDS } from '../lib/birds.js';
+import { useFlock } from '../lib/useFlock.js';
 import { useReveal } from '../lib/motion.js';
 
 const BELIEFS = [
@@ -12,11 +12,24 @@ const BELIEFS = [
   'We support legislation protecting the rights, health, and safety of birds in captivity.',
 ];
 
-const COLLAGE = ['marco', 'hita', 'oatmeal', 'kiko'];
+/* four current residents, one per species group, freshest listing first */
+function pickCollage(pool) {
+  const seen = new Set();
+  const picked = [];
+  for (const b of pool) {
+    if (seen.has(b.group)) continue;
+    seen.add(b.group);
+    picked.push(b);
+    if (picked.length === 4) break;
+  }
+  return picked.length === 4 ? picked : pool.slice(0, 4);
+}
 
 export default function About() {
-  const ref = useReveal();
-  const photos = COLLAGE.map((slug) => BIRDS.find((b) => b.slug === slug)).filter(Boolean);
+  const { birds, fallback } = useFlock();
+  const pool = birds || fallback;
+  const ref = useReveal([pool.length]);
+  const photos = pickCollage(pool);
 
   return (
     <div className="page-about" ref={ref}>
@@ -52,16 +65,18 @@ export default function About() {
               some for the rest of their lives. That's what sanctuary means.
             </p>
             <p>
-              Here's the part we're proudest of: <strong>nobody here is paid.</strong>{' '}
-              No staff, no salaries — every person who chops vegetables, scrubs
-              cages, and answers your emails is a volunteer. We run entirely on
-              donations and adoption fees, and every dollar goes back to the birds.
+              Here's the part we're proudest of: this place runs on{' '}
+              <strong>one paid caretaker and an army of volunteers.</strong> The
+              caretaker keeps daily care constant; every other hand — the ones
+              chopping vegetables, scrubbing cages, and answering your emails —
+              belongs to a volunteer. We run on donations and adoption fees, and
+              every dollar goes back to the birds.
             </p>
             <div className="about-badges">
               <span className="badge-chip">501(c)(3) nonprofit</span>
               <span className="badge-chip">GuideStar Silver Seal</span>
               <span className="badge-chip">Est. {ORG.est}</span>
-              <span className="badge-chip">All-volunteer</span>
+              <span className="badge-chip">Volunteer-powered</span>
             </div>
           </div>
           <div className="about-collage" aria-label="Birds who live at the sanctuary">

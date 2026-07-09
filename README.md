@@ -1,63 +1,60 @@
 # Feathered Friends Sanctuary & Rescue — "A Life Worth Living"
 
-A cinematic concept site for [Feathered Friends Sanctuary &
+A tropical, self-updating concept site for [Feathered Friends Sanctuary &
 Rescue](https://www.feathered-friends.com) (Edgerton, WI — est. 2000).
-Six pages — Home, Adopt, About, FAQ, Get Involved, Forms — carrying the
-sanctuary's real content: all 33 available birds with their real photos and
-volunteer-written bios, the real adoption process and policies, real boarding
-rates, and the organization's actual Google Forms. Designed to do three jobs:
 
-1. **Drive adoptions** — but honestly. Bird cards lead with volume, lifespan,
-   and experience level, and the adoption CTA is gated behind three plain-English
-   acknowledgments. Deliberate friction: the right match never needs a sales pitch.
-2. **Drive donations** — concrete impact tiers ("The Chop Club", wellness visits,
-   sanctuary sponsorship) linking to the org's real PayPal.
-3. **Recruit volunteers** — plus surrender and boarding paths.
+## What makes it interesting
 
-## The design
+- **The bird list updates itself.** A Netlify function
+  (`netlify/functions/birds.mjs`) scrapes the sanctuary's live species pages
+  on demand and returns the current adoptable birds — names, photos, and the
+  volunteers' own bios. Add or adopt a bird on the real site and this site
+  follows. Responses are CDN-cached for six hours (durable, with
+  stale-while-revalidate) so function invocations stay near zero; photos are
+  served straight from Wix's CDN. If the API is unreachable, the client falls
+  back to a bundled snapshot — the site never renders empty.
+- **A generative hero** — a boid murmuration flies over a lagoon-sunset
+  gradient, parting around the cursor while golden feathers drift down, with
+  two live-picked ambassador birds in arched frames.
+- **"What a parrot actually asks of you"** — a 24-hour day dial drawn with
+  animated SVG arc segments (dash-array morphing, so switching species
+  reshapes the day smoothly), paired with field notes on the honest
+  non-negotiables: flock time, volume, mess, decades.
+- **The Learn hub** (`#/learn`) — a four-chapter field guide (feeding,
+  behavior, health & safety, before-you-adopt) with a scrollspy sidebar,
+  a safe/never food grid, real Wisconsin avian-vet recommendations, and the
+  sanctuary's own recommended reading. Content aligned with their published
+  positions (World Parrot Trust, AAV, Mytoos, the True Nature of Parrots).
 
-A **night-to-daylight journey**: generative starling murmuration over a dawn
-sky (canvas boids that part around your cursor), a gold ribbon of "happy
-landings," warm editorial daylight for the flock, then back into the dark for
-**The Forever Math** — an interactive reckoning with what a parrot actually
-costs in years, dollars, and decibels. Species chips + an age slider redraw a
-life-together timeline ("Adopt a macaw at 34 and you'd be 99 at the end of it").
+## Pages
 
-- **Logo**: the organization's real two-macaw seal, redrawn as crisp SVG in the
-  site palette (`public/logo-seal.svg`).
-- **Portraits**: seven hand-drawn SVG species busts in arched aviary windows.
-- **Type**: Fraunces (display) · Instrument Sans (text) · Space Grotesk (numbers).
-- **Motion**: one physics — a single reveal system, tweened numbers,
-  spring-pop modal — all gated behind `prefers-reduced-motion`.
+Home · Adopt (live birds, filters, search, honesty-gated questionnaire
+links) · Learn · About (story + beliefs) · FAQ · Get Involved (volunteer,
+boarding rates & requirements, surrender) · Forms (the org's four real
+Google Forms).
+
+## Design system
+
+Tropical lagoon palette (deep teal, coral, mango, sand), Fraunces +
+Instrument Sans + Space Grotesk, layered wave dividers, one reveal-physics
+system for all motion, skeleton loading matched to the card layout,
+`prefers-reduced-motion` respected throughout. The two-macaw seal is the
+organization's real logo redrawn as SVG in the site palette.
 
 ## Run it
 
 ```bash
 npm install
-npm run dev       # http://localhost:5199
-npm run build     # production bundle in dist/ (~62 KB gzip JS)
-npm run preview   # serve the production build
+npm run dev       # http://localhost:5199 (uses the bundled bird snapshot)
+npm run build     # production bundle in dist/
 ```
 
-Deploy `dist/` to any static host (Netlify, Vercel, GitHub Pages).
+Deployed on Netlify: build runs `npm run build`, publishes `dist/`, and
+serves `/api/birds` through the function redirect in `netlify.toml`.
 
-## Honest-data note
+## Honesty notes
 
-Bird listings, adoption stories, and wait times are **sample data** for this
-concept build (labeled as such on the page). Contact details, address, mission
-language, founding year, and the PayPal/Facebook links are the organization's
-real ones.
-
-## Map
-
-```
-public/logo-seal.svg        the seal, redrawn
-src/lib/flock.js            species facts (lifespan/cost/dB) + sample birds + org info
-src/lib/motion.js           reveal observer, count-up, tween, scroll-lock hooks
-src/components/Murmuration.jsx   the boids sky
-src/components/Portraits.jsx     seven SVG species portraits
-src/components/BirdModal.jsx     Companion Facts + honest checkboxes
-src/components/sections/         Hero · Landings · Mission · Flock · Promise ·
-                                 Donate · Involved · Visit
-scripts/shots.mjs           screenshot harness (puppeteer-core + system Chrome)
-```
+Contact details, mission language, policies, boarding rates, form links, and
+bird listings are the organization's real ones. The sanctuary runs on one
+paid caretaker and an army of volunteers — the site says so. Sample data
+appears only if the live sync is unreachable, and is labeled.

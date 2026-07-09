@@ -1,18 +1,27 @@
 import Murmuration from '../Murmuration.jsx';
+import Wave from '../Wave.jsx';
 import { useReveal } from '../../lib/motion.js';
-import { BIRDS } from '../../lib/birds.js';
+import { useFlock } from '../../lib/useFlock.js';
 
-const HERO_BIRDS = [
-  { slug: 'marco', pos: '50% 18%' },
-  { slug: 'savannah', pos: '42% 12%' },
-];
+/* hand-tuned crops for birds we know; everyone else gets a face-first default */
+const POS = { marco: '50% 18%', savannah: '42% 12%', koda: '50% 14%' };
+
+/* pick two photogenic ambassadors from whatever's currently listed */
+function pickHeroBirds(pool) {
+  const first =
+    pool.find((b) => b.group === 'Macaw' && !b.bonded) || pool[0];
+  const second =
+    pool.find((b) => b !== first && b.group !== first.group && !b.bonded) ||
+    pool.find((b) => b !== first) ||
+    first;
+  return [first, second].filter(Boolean);
+}
 
 export default function Hero() {
   const ref = useReveal();
-  const featured = HERO_BIRDS.map((h) => ({
-    ...BIRDS.find((b) => b.slug === h.slug),
-    pos: h.pos,
-  }));
+  const { birds, fallback } = useFlock();
+  const pool = birds || fallback;
+  const featured = pickHeroBirds(pool);
 
   return (
     <section className="hero" id="top" ref={ref}>
@@ -27,11 +36,11 @@ export default function Hero() {
             <span data-reveal style={{ '--d': '250ms' }}>Every parrot deserves</span>
             <span data-reveal style={{ '--d': '400ms' }}>a life <em>worth living.</em></span>
             <span className="hero-title-accent" data-reveal style={{ '--d': '580ms' }}>
-              {BIRDS.length} of them are here, waiting to meet you.
+              {pool.length} of them are here, waiting to meet you.
             </span>
           </h1>
           <p className="hero-sub" data-reveal style={{ '--d': '760ms' }}>
-            Feathered Friends is an all-volunteer sanctuary and rescue for
+            Feathered Friends is a volunteer-powered sanctuary and rescue for
             companion parrots. Meet the flock, fall in love carefully, and
             stay for the whole wonderful ride.
           </p>
@@ -53,7 +62,11 @@ export default function Hero() {
               data-reveal={i === 0 ? 'right' : 'scale'}
               style={{ '--d': `${500 + i * 220}ms` }}
             >
-              <img src={b.photo} alt={`${b.name}, ${b.species}`} style={{ objectPosition: b.pos }} />
+              <img
+                src={b.photo}
+                alt={`${b.name}, ${b.species}`}
+                style={{ objectPosition: POS[b.slug] || '50% 16%' }}
+              />
               <span className="hero-bird-tag">
                 <strong>{b.name}</strong>
                 {b.species}
@@ -68,6 +81,7 @@ export default function Hero() {
           <path d="M12 4v15m0 0l-6-6m6 6l6-6" />
         </svg>
       </a>
+      <Wave color="var(--cream)" className="hero-wave" />
     </section>
   );
 }
