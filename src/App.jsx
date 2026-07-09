@@ -8,6 +8,7 @@ import About from './pages/About.jsx';
 import Faq from './pages/Faq.jsx';
 import Learn from './pages/Learn.jsx';
 import Events from './pages/Events.jsx';
+import Boarding from './pages/Boarding.jsx';
 import GetInvolved from './pages/GetInvolved.jsx';
 import FormsPage from './pages/FormsPage.jsx';
 
@@ -16,6 +17,7 @@ const PAGES = {
   '/adopt': Adopt,
   '/learn': Learn,
   '/events': Events,
+  '/boarding': Boarding,
   '/about': About,
   '/faq': Faq,
   '/get-involved': GetInvolved,

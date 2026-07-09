@@ -24,10 +24,26 @@ const ROLES = [
   },
 ];
 
-const BOARDING_RATES = [
-  { price: 15, per: '/day', who: 'Budgies, parakeets, cockatiels, parrotlets, conures, Senegals…' },
-  { price: 20, per: '/day', who: 'Amazons, greys, eclectus, Alexandrines…' },
-  { price: 30, per: '/day', who: 'Macaws, cockatoos…' },
+const MORE_WAYS = [
+  {
+    title: 'Give',
+    body: 'Chop, pellets, vet bills, air conditioning in July — donations keep it all running.',
+    cta: 'Donate',
+    href: '#/donate',
+  },
+  {
+    title: 'Sponsor a resident',
+    body: 'Some birds live out their whole lives here. Sponsorship covers one bird\'s food, enrichment, and vet fund.',
+    cta: 'Learn about sponsoring',
+    href: '#/donate',
+  },
+  {
+    title: 'Spread the word',
+    body: 'Follow us, share adoptable birds, and bring a friend to an event. Every share finds somebody\'s best friend.',
+    cta: 'Follow on Facebook',
+    href: ORG.facebook,
+    external: true,
+  },
 ];
 
 export default function GetInvolved() {
@@ -44,9 +60,9 @@ export default function GetInvolved() {
             The sanctuary runs on <em>people like you.</em>
           </h1>
           <p className="page-lead" data-reveal style={{ '--d': '240ms' }}>
-            Nobody here draws a salary — volunteers are the lifeblood of this
-            place. Whether you have two hours a month or a skill we haven't
-            thought of, there's a bird whose day you can change.
+            One paid caretaker, dozens of volunteers, and zero birds who care
+            about your résumé. Whether you have two hours a month or a skill we
+            haven't thought of, there's a bird whose day you can change.
           </p>
         </div>
       </section>
@@ -88,105 +104,36 @@ export default function GetInvolved() {
         </div>
       </section>
 
-      {/* ---------- boarding ---------- */}
-      <section className="inv-boarding" id="boarding">
+      {/* ---------- more ways ---------- */}
+      <section className="inv-more">
         <div className="rail">
           <p className="kicker" data-reveal>
-            Boarding
+            No spare hours?
           </p>
           <h2 data-reveal style={{ '--d': '120ms' }}>
-            Going away? Your bird can <em>flock with ours.</em>
+            Three more ways to <em>matter to a bird.</em>
           </h2>
-          <div className="boarding-grid">
-            <div className="boarding-rates stagger">
-              {BOARDING_RATES.map((r) => (
-                <div className="rate" key={r.price}>
-                  <span className="rate-price num">
-                    ${r.price}
-                    <em>{r.per}</em>
-                  </span>
-                  <p>{r.who}</p>
-                </div>
-              ))}
-              <p className="rate-note" data-reveal>
-                10% off if you bring your own cage — or we'll happily set up one
-                of ours at no charge. Active volunteers earn additional discounts.
-              </p>
-            </div>
-            <div className="boarding-reqs" data-reveal="right">
-              <h3>Before your bird checks in</h3>
-              <ul>
-                <li>
-                  <strong>Vet exam required</strong> — proof of an exam by an avian
-                  veterinarian, with any recommended diagnostics pursued.
-                </li>
-                <li>
-                  <strong>Disease testing</strong> — Psittacosis, PBFD, Avian
-                  Polyomavirus, Psittacine Herpes (PsHV-1), and Avian Bornavirus.
-                  It protects every bird in the building, including yours.
-                </li>
-                <li>
-                  <strong>Book a week ahead</strong> — the boarding contract must
-                  arrive at least one week before any stay. One form per bird.
-                </li>
-                <li>
-                  <strong>Food</strong> — we serve fresh chop in the morning and
-                  TOPS pellets in the evening at no charge. On a different diet?
-                  Send it along so nobody's stomach gets surprised.
-                </li>
-              </ul>
-              <a className="btn btn-ink" href={ORG.forms.boarding} target="_blank" rel="noreferrer">
-                Boarding Form ↗
-              </a>
-            </div>
+          <div className="roles stagger">
+            {MORE_WAYS.map((w) => (
+              <article className="role role-cta" key={w.title}>
+                <h3>{w.title}</h3>
+                <p>{w.body}</p>
+                <a
+                  className="role-link"
+                  href={w.href}
+                  target={w.external ? '_blank' : undefined}
+                  rel={w.external ? 'noreferrer' : undefined}
+                >
+                  {w.cta} →
+                </a>
+              </article>
+            ))}
           </div>
-        </div>
-      </section>
-
-      {/* ---------- surrender ---------- */}
-      <section className="inv-surrender" id="surrender">
-        <div className="rail">
-          <p className="kicker" data-reveal>
-            Surrender
+          <p className="inv-services-note" data-reveal>
+            Looking for <strong>boarding</strong> or need to{' '}
+            <strong>surrender a bird</strong>? Those live on their{' '}
+            <a href="#/boarding">own page</a>.
           </p>
-          <h2 data-reveal style={{ '--d': '120ms' }}>
-            Life changes. <em>We're here for that.</em>
-          </h2>
-          <div className="surrender-grid">
-            <div className="surrender-text" data-reveal>
-              <p>
-                Our mission includes sheltering parrots whose people can no longer
-                care for them. If that's where you are:{' '}
-                <strong>your decision will be met without judgment</strong>, and
-                everything you share stays strictly confidential.
-              </p>
-              <p>
-                Space is limited, so we run surrenders on a waiting list, opening
-                for intake about once every 30 days and reaching out by urgency —
-                it can take several months. If your situation is an emergency,
-                email us and we'll help you find a sanctuary that can take your
-                bird sooner.
-              </p>
-              <p>
-                There's no mandatory surrender fee. Many owners choose a one-time
-                or continuing donation toward their bird's care until the right
-                forever home comes along — always welcome, never required.
-              </p>
-            </div>
-            <div className="surrender-cta" data-reveal="right">
-              <h3>How it starts</h3>
-              <p>
-                The Surrender Form puts your bird on our waiting list. We'll
-                reach out as soon as we have it.
-              </p>
-              <a className="btn btn-ink" href={ORG.forms.surrender} target="_blank" rel="noreferrer">
-                Surrender Form ↗
-              </a>
-              <a className="surrender-mail" href={`mailto:${ORG.email}?subject=${encodeURIComponent('Surrender question')}`}>
-                or email us with questions first
-              </a>
-            </div>
-          </div>
         </div>
       </section>
     </div>

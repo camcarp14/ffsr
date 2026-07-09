@@ -7,7 +7,8 @@ const LINKS = [
   { href: '#/events', route: '/events', label: 'Events' },
   { href: '#/about', route: '/about', label: 'About' },
   { href: '#/faq', route: '/faq', label: 'FAQ' },
-  { href: '#/get-involved', route: '/get-involved', label: 'Get involved' },
+  { href: '#/get-involved', route: '/get-involved', label: 'Volunteer' },
+  { href: '#/boarding', route: '/boarding', label: 'Boarding' },
   { href: '#/forms', route: '/forms', label: 'Forms' },
 ];
 

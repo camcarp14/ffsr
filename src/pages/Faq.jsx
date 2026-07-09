@@ -87,7 +87,7 @@ const SECTIONS = [
         a: (
           <>
             Yes! We board parrots short and long term — see{' '}
-            <a href="#/get-involved">rates and requirements</a> — and
+            <a href="#/boarding">rates and requirements</a> — and
             occasionally hold wing, beak, and nail trim days. Watch our{' '}
             <a href={ORG.facebook} target="_blank" rel="noreferrer">
               Facebook page

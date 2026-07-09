@@ -31,7 +31,7 @@
 }
 .brand img {
   border-radius: 50%;
-  background: var(--cream);
+  background: #fff;
   transition: transform var(--t-med) var(--ease-spring);
 }
 .brand:hover img {
@@ -1243,7 +1243,7 @@ input[type='range']::-moz-range-thumb {
 }
 .footer-brand img {
   border-radius: 50%;
-  background: var(--cream);
+  background: #fff;
 }
 .footer-brand p {
   font-size: 0.95rem;

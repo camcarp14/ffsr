@@ -742,3 +742,45 @@
     max-height: 540px;
   }
 }
+
+/* ---------- get involved: more-ways + services note ---------- */
+.inv-more {
+  background: var(--cream);
+  padding-block: clamp(4rem, 7vw, 6rem);
+  color: var(--ink);
+}
+.inv-more .kicker {
+  color: var(--gold-deep);
+}
+.inv-more h2 {
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  margin-top: 1.3rem;
+}
+.inv-more h2 em {
+  color: var(--gold-deep);
+}
+.role-cta {
+  display: flex;
+  flex-direction: column;
+}
+.role-link {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  font-weight: 700;
+  color: var(--pine);
+  text-decoration: none;
+  transition: letter-spacing var(--t-med) var(--ease-out), color var(--t-med) var(--ease-out);
+}
+.role-link:hover {
+  letter-spacing: 0.03em;
+  color: var(--moss);
+}
+.inv-services-note {
+  margin-top: 2.6rem;
+  font-size: 0.95rem;
+  color: var(--ink-60);
+}
+.inv-services-note a {
+  color: var(--pine);
+  font-weight: 700;
+}

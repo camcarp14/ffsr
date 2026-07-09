@@ -21,6 +21,7 @@ export default function Footer() {
           <a href="#/about">About</a>
           <a href="#/faq">FAQ</a>
           <a href="#/get-involved">Volunteer</a>
+          <a href="#/boarding">Boarding &amp; surrender</a>
           <a href="#/forms">Forms</a>
           <a href="#/donate">Donate</a>
           <a href={ORG.facebook} target="_blank" rel="noreferrer">

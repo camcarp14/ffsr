@@ -41,8 +41,9 @@ export default function Visit() {
           </a>
         </div>
         <div className="visit-postcard" data-reveal="right" style={{ '--d': '160ms' }} aria-hidden="true">
-          {/* postcard from Edgerton: barn, fields, and a very loud roofline */}
-          <svg viewBox="0 0 420 320" role="img" aria-label="Illustration of the sanctuary in Edgerton, Wisconsin">
+          {/* postcard of the real place: the long gray building with its
+              orange stripe, the fresh asphalt lot, and the yard sign */}
+          <svg viewBox="0 0 420 320" role="img" aria-label="Illustration of the sanctuary building in Edgerton, Wisconsin">
             <defs>
               <linearGradient id="pc-sky" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#f2c14e" />
@@ -51,29 +52,56 @@ export default function Visit() {
               </linearGradient>
             </defs>
             <rect width="420" height="320" rx="14" fill="url(#pc-sky)" />
-            <circle cx="330" cy="74" r="34" fill="#faf5ea" opacity=".9" />
-            {/* distant treeline */}
-            <path d="M0 190 Q40 176 80 188 Q120 174 160 186 Q210 172 260 186 Q320 174 420 188 L420 320 L0 320 Z" fill="#2e6b5e" />
-            {/* field */}
-            <path d="M0 218 Q140 204 420 216 L420 320 L0 320 Z" fill="#17453c" />
-            {/* barn */}
+            <circle cx="316" cy="64" r="28" fill="#faf5ea" opacity=".9" />
+            {/* distant treeline + meadow */}
+            <path d="M0 172 Q40 156 80 170 Q120 154 160 168 Q210 152 260 168 Q320 154 420 170 L420 320 L0 320 Z" fill="#14958f" />
+            <path d="M0 200 Q140 186 420 196 L420 320 L0 320 Z" fill="#4d9c4c" />
+            {/* the building: long, low, gray metal with the orange stripe */}
             <g>
-              <path d="M120 156 L190 120 L260 156 L260 234 L120 234 Z" fill="#c43a2a" />
-              <path d="M112 160 L190 116 L268 160 L258 150 L190 112 L122 150 Z" fill="#7a2417" />
-              <rect x="172" y="186" width="36" height="48" rx="2" fill="#7a2417" />
-              <path d="M172 186 h36 M190 186 v48 M172 210 h36" stroke="#faf5ea" strokeWidth="2.4" opacity=".6" />
-              <rect x="136" y="170" width="20" height="16" rx="2" fill="#faf5ea" opacity=".85" />
-              <rect x="224" y="170" width="20" height="16" rx="2" fill="#faf5ea" opacity=".85" />
+              <path d="M110 170 L126 150 L354 150 L368 170 Z" fill="#e9edee" />
+              <path d="M110 170 L126 150 L354 150 L368 170" fill="none" stroke="#c3cccd" strokeWidth="2" />
+              <rect x="116" y="170" width="246" height="62" fill="#cdd3d5" />
+              <rect x="116" y="170" width="246" height="62" fill="none" stroke="#aeb7b9" strokeWidth="1.6" />
+              <rect x="116" y="178" width="246" height="7" fill="#e8703a" />
+              <path d="M150 185 v47 M192 185 v47 M234 185 v47 M276 185 v47 M318 185 v47 M348 185 v47" stroke="#b9c1c3" strokeWidth="1.4" />
+              {/* left entry: door with window + logo sign beside it */}
+              <rect x="160" y="194" width="20" height="38" rx="1.5" fill="#f5f2ea" stroke="#aeb7b9" strokeWidth="1.4" />
+              <rect x="165" y="200" width="10" height="12" rx="1" fill="#9fc4cc" />
+              <rect x="186" y="196" width="14" height="18" rx="1.5" fill="#f5f2ea" stroke="#aeb7b9" strokeWidth="1.2" />
+              <circle cx="193" cy="203" r="4.4" fill="#1e3a78" />
+              {/* window */}
+              <rect x="248" y="196" width="22" height="16" rx="1.5" fill="#9fc4cc" stroke="#f5f2ea" strokeWidth="2" />
+              {/* right door + tidy vent */}
+              <rect x="298" y="194" width="20" height="38" rx="1.5" fill="#e8e5dc" stroke="#aeb7b9" strokeWidth="1.4" />
+              <rect x="332" y="196" width="12" height="10" rx="1" fill="#b9c1c3" />
             </g>
-            {/* birds on the roofline + leaving */}
-            <g stroke="#0d2622" strokeWidth="2.6" fill="none" strokeLinecap="round">
-              <path d="M150 132 q5 -8 10 0 M160 128 q5 -8 10 0" transform="translate(-16 -26)" />
-              <path d="M262 96 q5 -8 10 0" />
-              <path d="M300 78 q4 -7 9 0" />
-              <path d="M330 108 q4 -7 9 0" />
+            {/* yard sign on the left lawn */}
+            <g>
+              <path d="M44 204 v26 M76 204 v26" stroke="#8a5a3b" strokeWidth="4" strokeLinecap="round" />
+              <rect x="34" y="186" width="52" height="24" rx="5" fill="#faf5ea" stroke="#8a5a3b" strokeWidth="2" />
+              <circle cx="48" cy="198" r="6" fill="#1e3a78" />
+              <path d="M58 194 h20 M58 200 h20" stroke="#1e3a78" strokeWidth="2.4" strokeLinecap="round" />
             </g>
-            {/* fence */}
-            <path d="M24 250 h372 M44 236 v28 M104 236 v28 M164 236 v28 M224 236 v28 M284 236 v28 M344 236 v28" stroke="#a98b66" strokeWidth="4" strokeLinecap="round" fill="none" />
+            {/* fresh asphalt lot, rounded like the photo */}
+            <path d="M94 242 C 150 230 322 230 388 244 C 402 260 400 282 382 296 C 300 310 158 310 108 296 C 86 280 84 256 94 242 Z" fill="#4a4f54" />
+            <path d="M94 242 C 150 230 322 230 388 244" fill="none" stroke="#3a3f44" strokeWidth="3" opacity=".6" />
+            {/* birds over the roofline */}
+            <g stroke="#063b42" strokeWidth="2.6" fill="none" strokeLinecap="round">
+              <path d="M258 124 q5 -8 10 0" />
+              <path d="M292 108 q4 -7 9 0" />
+              <path d="M328 130 q4 -7 9 0" />
+            </g>
+            {/* overhanging foliage, like the photo's framing */}
+            <g fill="#2e8b57">
+              <ellipse cx="12" cy="22" rx="62" ry="30" />
+              <ellipse cx="72" cy="2" rx="70" ry="26" />
+              <ellipse cx="410" cy="16" rx="66" ry="30" />
+              <ellipse cx="378" cy="-6" rx="60" ry="24" />
+            </g>
+            <g fill="#3da35d" opacity=".85">
+              <ellipse cx="34" cy="6" rx="46" ry="20" />
+              <ellipse cx="400" cy="-2" rx="48" ry="20" />
+            </g>
             <text x="30" y="300" fontFamily="Georgia, serif" fontSize="19" fontStyle="italic" fill="#faf5ea">
               Greetings from Edgerton, Wisconsin
             </text>
