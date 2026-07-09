@@ -10,6 +10,9 @@ export const prefersReducedMotion = () =>
 let sharedObserver = null;
 const getObserver = () => {
   if (!sharedObserver) {
+    /* threshold 0: fire as soon as the element's edge crosses the margin
+       line. A ratio threshold breaks on elements taller than the viewport
+       (a 5000px bird grid can never reach 18% visibility in a 900px window). */
     sharedObserver = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -19,14 +22,16 @@ const getObserver = () => {
           }
         }
       },
-      { threshold: 0.18, rootMargin: '0px 0px -6% 0px' }
+      { threshold: 0, rootMargin: '0px 0px -7% 0px' }
     );
   }
   return sharedObserver;
 };
 
-/* Attach to a container: observes itself + all [data-reveal]/.stagger inside */
-export function useReveal() {
+/* Attach to a container: observes itself + all [data-reveal]/.stagger inside.
+   Pass deps that change when inner content is re-created (e.g. a re-keyed
+   filtered grid) so the fresh DOM nodes get observed too. */
+export function useReveal(deps = []) {
   const ref = useRef(null);
   useEffect(() => {
     const root = ref.current;
@@ -40,10 +45,11 @@ export function useReveal() {
     const targets = [
       ...(root.matches('[data-reveal], .stagger') ? [root] : []),
       ...root.querySelectorAll('[data-reveal], .stagger'),
-    ];
+    ].filter((t) => !t.classList.contains('in'));
     targets.forEach((t) => obs.observe(t));
     return () => targets.forEach((t) => obs.unobserve(t));
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
   return ref;
 }
 

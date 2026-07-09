@@ -31,9 +31,9 @@ const STEPS = [
 ];
 
 export default function Adopt() {
-  const ref = useReveal();
   const [group, setGroup] = useState('All');
   const [query, setQuery] = useState('');
+  const ref = useReveal([group, query]);
   const [openBird, setOpenBird] = useState(null);
 
   const flock = useMemo(() => {
