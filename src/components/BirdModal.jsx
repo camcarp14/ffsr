@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ORG, speciesFacts } from '../lib/flock.js';
 import { useEscape, useScrollLock } from '../lib/motion.js';
 import { FeatherMeter } from './FeatherMeter.jsx';
@@ -62,7 +63,9 @@ export default function BirdModal({ bird, onClose }) {
   const firstName = bird.name.split(' ')[0].replace(/[',]$/, '');
   const paragraphs = bird.bio.split('\n\n').filter(Boolean);
 
-  return (
+  /* Portal to <body>: position:fixed inside the page tree can get trapped
+     by transformed ancestors (e.g. the route-transition animation). */
+  return createPortal(
     <div className="modal-scrim" onClick={onClose} role="presentation">
       <div
         className="modal"
@@ -146,6 +149,7 @@ export default function BirdModal({ bird, onClose }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

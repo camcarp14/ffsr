@@ -4,8 +4,10 @@
    ============================================================ */
 
 /* ---------- page transitions ---------- */
+/* No fill-mode: a persisted identity transform would make <main> the
+   containing block for every position:fixed descendant forever. */
 .pagefade {
-  animation: pagefadein 0.55s var(--ease-out) both;
+  animation: pagefadein 0.55s var(--ease-out);
 }
 @keyframes pagefadein {
   from {
