@@ -1,20 +1,46 @@
 import { useEffect, useState } from 'react';
 import { ORG } from '../lib/flock.js';
 
-const LINKS = [
+const NAV = [
   { href: '#/adopt', route: '/adopt', label: 'Adopt' },
   { href: '#/learn', route: '/learn', label: 'Learn' },
   { href: '#/events', route: '/events', label: 'Events' },
-  { href: '#/about', route: '/about', label: 'About' },
-  { href: '#/faq', route: '/faq', label: 'FAQ' },
-  { href: '#/get-involved', route: '/get-involved', label: 'Volunteer' },
-  { href: '#/boarding', route: '/boarding', label: 'Boarding' },
-  { href: '#/forms', route: '/forms', label: 'Forms' },
+  {
+    label: 'About',
+    children: [
+      { href: '#/about', route: '/about', label: 'Our story' },
+      { href: '#/faq', route: '/faq', label: 'FAQ' },
+    ],
+  },
+  {
+    label: 'Get involved',
+    children: [
+      { href: '#/get-involved', route: '/get-involved', label: 'Volunteer' },
+      { href: '#/boarding', route: '/boarding', label: 'Boarding & surrender' },
+      { href: '#/forms', route: '/forms', label: 'Forms' },
+    ],
+  },
 ];
+
+/* flat list for the mobile hamburger */
+const FLAT = NAV.flatMap((item) => (item.children ? item.children : [item]));
+
+const Caret = ({ open }) => (
+  <svg
+    viewBox="0 0 12 8"
+    width="10"
+    height="7"
+    aria-hidden="true"
+    style={{ transform: open ? 'rotate(180deg)' : undefined, transition: 'transform 200ms ease' }}
+  >
+    <path d="M1 1.5 L6 6.5 L11 1.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 export default function Header({ route }) {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // mobile menu
+  const [drop, setDrop] = useState(null); // open dropdown label
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -23,7 +49,10 @@ export default function Header({ route }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => setOpen(false), [route]);
+  useEffect(() => {
+    setOpen(false);
+    setDrop(null);
+  }, [route]);
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''} ${open ? 'menu-open' : ''}`}>
@@ -42,11 +71,39 @@ export default function Header({ route }) {
           </span>
         </a>
         <nav className="site-nav" aria-label="Primary">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href} aria-current={route === l.route ? 'page' : undefined}>
-              {l.label}
-            </a>
-          ))}
+          {NAV.map((item) =>
+            item.children ? (
+              <div
+                className="nav-drop"
+                key={item.label}
+                onMouseEnter={() => setDrop(item.label)}
+                onMouseLeave={() => setDrop((d) => (d === item.label ? null : d))}
+              >
+                <button
+                  className={`nav-drop-btn ${item.children.some((c) => c.route === route) ? 'nav-on' : ''}`}
+                  aria-haspopup="true"
+                  aria-expanded={drop === item.label}
+                  onClick={() => setDrop((d) => (d === item.label ? null : item.label))}
+                >
+                  {item.label}
+                  <Caret open={drop === item.label} />
+                </button>
+                <div className={`drop-panel ${drop === item.label ? 'drop-open' : ''}`}>
+                  <div className="drop-card">
+                    {item.children.map((c) => (
+                      <a key={c.href} href={c.href} aria-current={route === c.route ? 'page' : undefined}>
+                        {c.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a key={item.href} href={item.href} aria-current={route === item.route ? 'page' : undefined}>
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
         <a className="btn btn-gold header-donate" href="#/donate">
           Donate
@@ -63,7 +120,7 @@ export default function Header({ route }) {
         </button>
       </div>
       <nav className={`mobile-nav ${open ? 'open' : ''}`} aria-label="Mobile">
-        {LINKS.map((l) => (
+        {FLAT.map((l) => (
           <a key={l.href} href={l.href} aria-current={route === l.route ? 'page' : undefined}>
             {l.label}
           </a>

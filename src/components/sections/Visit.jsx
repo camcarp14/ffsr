@@ -71,25 +71,46 @@ export default function Visit() {
               <rect x="112" y="199" width="252" height="7" fill="#e8703a" />
               <rect x="112" y="207.5" width="252" height="1.8" fill="#3f6fb5" />
               {/* small window left of the door */}
-              <rect x="164" y="180" width="18" height="14" rx="1.5" fill="#9fc4cc" stroke="#f5f2ea" strokeWidth="2" />
+              <rect x="156" y="177" width="26" height="19" rx="1.5" fill="#9fc4cc" stroke="#f5f2ea" strokeWidth="2" />
+              <path d="M169 178 v17" stroke="#f5f2ea" strokeWidth="1.4" />
               {/* the door: white with a tall glass pane */}
               <rect x="204" y="182" width="24" height="52" rx="2" fill="#f7f5ef" stroke="#aeb7b9" strokeWidth="1.6" />
               <rect x="208" y="187" width="16" height="28" rx="1.5" fill="#9fc4cc" />
               <circle cx="224.5" cy="212" r="1.6" fill="#8a8f92" />
-              {/* wall sign right of the door: Feathered Friends Sanctuary */}
+              {/* wall sign: drawn version of the real one */}
               <g>
-                <rect x="244" y="176" width="92" height="40" rx="3" fill="#4a4038" />
-                <rect x="247" y="179" width="86" height="34" rx="2" fill="#faf5ea" />
-                {/* left bird */}
-                <path d="M254 190 c 5 -6 11 -4 12 1 c 1 5 -3 10 -8 11 c -2 -4 -4 -8 -4 -12 z" fill="#3da35d" />
-                <path d="M255 189 c 2 -3 6 -4 8 -2" fill="none" stroke="#e8912d" strokeWidth="2" strokeLinecap="round" />
-                {/* right bird */}
-                <path d="M326 190 c -5 -6 -11 -4 -12 1 c -1 5 3 10 8 11 c 2 -4 4 -8 4 -12 z" fill="#c43a2a" />
-                <path d="M318 200 c 1 4 0 8 -2 10" stroke="#c43a2a" strokeWidth="2.4" strokeLinecap="round" fill="none" />
-                {/* lettering */}
-                <path d="M272 185 h36 M276 191 h28" stroke="#b03a30" strokeWidth="3" strokeLinecap="round" />
-                <path d="M272 198 h36 M274 203 h32" stroke="#4a5560" strokeWidth="2" strokeLinecap="round" />
-                <path d="M270 209 h40" stroke="#3f6fb5" strokeWidth="1.8" strokeLinecap="round" />
+                <rect x="238" y="172" width="110" height="48" rx="3" fill="#463c33" />
+                <rect x="241" y="175" width="104" height="42" rx="2" fill="#fbf8f0" />
+                {/* green sprig peeking at the top-left, like the photo */}
+                <path d="M246 178 c 2 -3 5 -4 8 -3 c -2 2 -5 3 -8 3 z" fill="#3da35d" />
+                {/* toucan on the left: black body, yellow chest, banana beak */}
+                <g>
+                  <path d="M251 208 h10" stroke="#8a6a4a" strokeWidth="1.6" strokeLinecap="round" />
+                  <path d="M253 187 c 4 -3 8 -2 9 2 c 1 7 0 14 -3 18 c -3 1 -5 0 -6 -2 c -2 -6 -2 -13 0 -18 z" fill="#26221f" />
+                  <path d="M256 192 c 2 0 4 2 4 5 c 0 4 -1 7 -3 9 c -1 -4 -2 -9 -1 -14 z" fill="#ffd35c" />
+                  <circle cx="257" cy="188.5" r="1.6" fill="#fbf8f0" />
+                  <circle cx="257.3" cy="188.5" r="0.8" fill="#26221f" />
+                  <path d="M259 187 c 5 -1.5 9 0 10 3 c -3 1.5 -7 1.5 -10 0 z" fill="#e8912d" />
+                  <path d="M267 188.5 c 1 0.6 1.6 1.2 2 1.5 c -1 0.5 -2 0.7 -3 0.6 z" fill="#26221f" />
+                </g>
+                {/* scarlet macaw on the right, long tail down */}
+                <g>
+                  <path d="M325 206 h12" stroke="#8a6a4a" strokeWidth="1.6" strokeLinecap="round" />
+                  <path d="M330 184 c 4 -2 7 0 7 4 c 0 6 -2 12 -5 16 c -2 0 -4 -1 -4 -3 c -1 -6 0 -12 2 -17 z" fill="#c43a2a" />
+                  <path d="M334 192 c 2 1 3 4 2 7 c -1 3 -2 5 -4 6 c 0 -4 0 -9 2 -13 z" fill="#ffd35c" />
+                  <path d="M335 196 c 1.5 1 2 3 1.5 5 c -1 2 -2 3 -3 3.5 c 0 -3 0.5 -6 1.5 -8.5 z" fill="#3f6fb5" />
+                  <circle cx="332" cy="186.5" r="1.7" fill="#fbf8f0" />
+                  <circle cx="332.3" cy="186.7" r="0.8" fill="#26221f" />
+                  <path d="M329.5 187.5 c -2 -0.5 -3.5 0.5 -3.5 2 c 1.5 1 3 1 4 0.2 z" fill="#26221f" />
+                  <path d="M331 205 c 0.5 4 0 8 -1.5 11 c -1.5 -3 -1.5 -7 -0.5 -11 z" fill="#c43a2a" />
+                </g>
+                {/* lettering, like the real sign */}
+                <text x="293" y="186" textAnchor="middle" fontFamily="Georgia, serif" fontSize="9" fontWeight="700" fill="#b03a30">Feathered Friends</text>
+                <text x="293" y="196" textAnchor="middle" fontFamily="Georgia, serif" fontSize="9" fontWeight="700" fill="#b03a30">Sanctuary</text>
+                <text x="293" y="203.5" textAnchor="middle" fontFamily="Georgia, serif" fontSize="5.6" fontWeight="600" fill="#2c3e66">Exotic Bird Rescue</text>
+                <text x="293" y="209.5" textAnchor="middle" fontFamily="Georgia, serif" fontSize="5.6" fontWeight="600" fill="#2c3e66">and Adoption</text>
+                <rect x="241" y="211.5" width="104" height="5.5" fill="#ffffff" />
+                <text x="293" y="215.8" textAnchor="middle" fontFamily="Verdana, sans-serif" fontSize="4.4" fontWeight="600" fill="#2b6cb0">www.feathered-friends.com</text>
               </g>
               {/* downspout at the left corner */}
               <path d="M115 156 v78" stroke="#e9edee" strokeWidth="4" strokeLinecap="round" />

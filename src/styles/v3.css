@@ -784,3 +784,84 @@
   color: var(--pine);
   font-weight: 700;
 }
+
+/* ---------- nav dropdowns ---------- */
+.nav-drop {
+  position: relative;
+}
+.nav-drop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--cream);
+  font-weight: 600;
+  font-size: 0.93rem;
+  opacity: 0.85;
+  padding-block: 0.4rem;
+  position: relative;
+  transition: opacity var(--t-fast) var(--ease-out);
+}
+.nav-drop-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: right var(--t-med) var(--ease-out);
+}
+.nav-drop-btn:hover,
+.nav-drop:focus-within .nav-drop-btn {
+  opacity: 1;
+}
+.nav-drop-btn:hover::after,
+.nav-drop-btn.nav-on::after {
+  right: 0;
+}
+.nav-drop-btn.nav-on {
+  opacity: 1;
+}
+.drop-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  padding-top: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+  z-index: 160;
+}
+.drop-panel.drop-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.drop-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 215px;
+  background: rgba(3, 45, 52, 0.97);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--cream-12);
+  border-radius: 14px;
+  padding: 0.5rem;
+  box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.5);
+}
+.drop-card a {
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.93rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 9px;
+  transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+}
+.drop-card a:hover {
+  background: var(--cream-12);
+  color: var(--gold-bright);
+}
+.drop-card a[aria-current='page'] {
+  color: var(--gold);
+}
