@@ -60,8 +60,8 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.04fr 0.96fr;
-  gap: clamp(2rem, 4vw, 4.5rem);
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
   padding-block: 9.5rem 6.5rem;
   width: var(--rail);
@@ -71,12 +71,12 @@
   padding-block: 0;
 }
 .hero-title {
-  font-size: clamp(2.5rem, 5.4vw, 4.7rem);
+  font-size: clamp(2.4rem, 4.9vw, 4.3rem);
 }
 .hero-birds {
   position: relative;
-  height: min(600px, 66vh);
-  min-height: 420px;
+  height: min(680px, 74vh);
+  min-height: 480px;
   pointer-events: auto;
 }
 .hero-bird {
@@ -96,18 +96,18 @@
     0 0 60px -20px rgba(255, 181, 71, 0.35);
 }
 .hero-bird-1 {
-  width: 60%;
+  width: 66%;
   aspect-ratio: 4 / 5.2;
-  right: 32%;
-  top: 2%;
+  right: 34%;
+  top: 1%;
   transform: rotate(-3deg);
   z-index: 2;
 }
 .hero-bird-2 {
-  width: 47%;
+  width: 53%;
   aspect-ratio: 4 / 5.2;
   right: 0;
-  bottom: 4%;
+  bottom: 3%;
   transform: rotate(2.6deg);
 }
 .hero-bird:hover {
@@ -927,8 +927,8 @@
     gap: 2.2rem;
   }
   .hero-birds {
-    height: 270px;
-    min-height: 240px;
+    height: 320px;
+    min-height: 280px;
   }
   .hero-bird-1 {
     width: 55%;

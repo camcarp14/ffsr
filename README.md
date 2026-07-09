@@ -29,7 +29,7 @@ Rescue](https://www.feathered-friends.com) (Edgerton, WI — est. 2000).
 ## Pages
 
 Home · Adopt (live birds, filters, search, honesty-gated questionnaire
-links) · Learn · About (story + beliefs) · FAQ · Get Involved (volunteer,
+links) · Learn · Events (live Facebook feed) · About (story + beliefs) · FAQ · Get Involved (volunteer,
 boarding rates & requirements, surrender) · Forms (the org's four real
 Google Forms).
 

@@ -1,6 +1,5 @@
 import { useReveal, useCountUp } from '../../lib/motion.js';
 import { useFlock } from '../../lib/useFlock.js';
-import { PerchTrio } from '../PerchFlock.jsx';
 
 function Stat({ value, suffix, label, delay }) {
   const [ref, display] = useCountUp(value);
@@ -21,7 +20,6 @@ export default function Mission() {
   const ref = useReveal([count]);
   return (
     <section className="mission" id="mission" ref={ref}>
-      <PerchTrio className="perch-art mission-perch" data-reveal="scale" />
       <div className="rail">
         <p className="kicker" data-reveal>
           Why we exist

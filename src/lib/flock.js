@@ -174,7 +174,7 @@ export const ORG = {
   phone: '608-302-1732',
   phoneNote: 'voicemail only — we return calls between feedings',
   donateUrl: 'https://www.paypal.com/donate/?hosted_button_id=Y5DW68FD7QJVS',
-  facebook: 'https://www.facebook.com/Feathered-Friends-Sanctuary-Rescue-171994686190287/',
+  facebook: 'https://www.facebook.com/FeatheredFriendsWI',
   site: 'https://www.feathered-friends.com',
   notice: 'Open by appointment only — email us to schedule a visit',
   radiusNote: 'Adoptions are limited to homes within a two-hour drive of Edgerton, WI — the visits matter that much.',

@@ -48,28 +48,42 @@ export default function Murmuration() {
       vy: rand(-0.5, 0.5),
       depth: Math.random(), // 0 far … 1 near
       flap: Math.random() * Math.PI * 2,
+      flapSp: rand(0.1, 0.2), // each bird has its own wingbeat
+      glider: Math.random() < 0.28, // some birds coast between beats
     }));
 
     const reduced = prefersReducedMotion();
 
     const drawBird = (b, angle) => {
-      const s = 1.1 + b.depth * 1.9; // size by depth
-      const a = 0.22 + b.depth * 0.55;
-      const flapLift = reduced ? 0.35 : Math.sin(b.flap) * 0.45 + 0.5; // 0..1 wing position
+      const s = 1.2 + b.depth * 2; // size by depth
+      const a = 0.24 + b.depth * 0.55;
+      const phase = reduced ? 0.3 : Math.sin(b.flap);
+      // gliders hold their wings out flat near the top of the stroke
+      const gliding = b.glider && phase > 0.1;
+      const flapLift = gliding ? 0.22 : phase * 0.45 + 0.5; // 0..1 wing position
       ctx.save();
       ctx.translate(b.x, b.y);
       ctx.rotate(angle);
       ctx.globalAlpha = a;
-      ctx.strokeStyle = b.depth > 0.75 ? '#ffd06b' : '#f6ead3';
-      ctx.lineWidth = Math.max(0.7, s * 0.42);
+      const tint = b.depth > 0.75 ? '#ffd06b' : '#f6ead3';
+      ctx.strokeStyle = tint;
+      ctx.fillStyle = tint;
       ctx.lineCap = 'round';
-      // a bird = two arcing wing strokes from a point, "M" silhouette
-      const wing = s * 2.5;
-      const lift = wing * (0.25 + flapLift * 0.55);
+      // plump little body + head, so they read as birds, not check marks
       ctx.beginPath();
-      ctx.moveTo(-wing, -lift * 0.55);
-      ctx.quadraticCurveTo(-wing * 0.35, lift * 0.28, 0, 0);
-      ctx.quadraticCurveTo(wing * 0.35, lift * 0.28, wing, -lift * 0.55);
+      ctx.ellipse(0, s * 0.22, s * 0.72, s * 0.4, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(s * 0.78, s * 0.05, s * 0.3, 0, Math.PI * 2);
+      ctx.fill();
+      // wings — two soft arcs lifting from the shoulders
+      const wing = s * 2.4;
+      const lift = wing * (0.22 + flapLift * 0.55);
+      ctx.lineWidth = Math.max(0.8, s * 0.4);
+      ctx.beginPath();
+      ctx.moveTo(-wing * 0.92, -lift * 0.6);
+      ctx.quadraticCurveTo(-wing * 0.33, lift * 0.22, 0, -s * 0.02);
+      ctx.quadraticCurveTo(wing * 0.33, lift * 0.22, wing * 0.92, -lift * 0.6);
       ctx.stroke();
       ctx.restore();
     };
@@ -81,29 +95,51 @@ export default function Murmuration() {
       vy: 0.14 + Math.random() * 0.22,
       sway: Math.random() * Math.PI * 2,
       swaySp: 0.006 + Math.random() * 0.008,
-      size: 7 + Math.random() * 9,
+      size: 11 + Math.random() * 10,
       spin: Math.random() * Math.PI,
     }));
 
     const drawFeather = (f) => {
-      const rock = Math.sin(f.sway) * 0.6;
+      const rock = Math.sin(f.sway) * 0.5;
+      const s = f.size;
       ctx.save();
-      ctx.translate(f.x + Math.sin(f.sway) * 26, f.y);
-      ctx.rotate(rock + f.spin * 0.2);
-      ctx.globalAlpha = 0.3;
-      ctx.strokeStyle = '#ffb547';
-      ctx.lineWidth = 1.1;
-      ctx.beginPath(); // quill
-      ctx.moveTo(0, -f.size);
-      ctx.quadraticCurveTo(f.size * 0.2, 0, 0, f.size);
-      ctx.stroke();
-      ctx.globalAlpha = 0.16;
+      ctx.translate(f.x + Math.sin(f.sway) * 24, f.y);
+      ctx.rotate(rock + 0.45);
+      // vane — rounded tip, tapering to a bare quill at the base
+      ctx.globalAlpha = 0.2;
       ctx.fillStyle = '#ffd06b';
-      ctx.beginPath(); // vane
-      ctx.moveTo(0, -f.size);
-      ctx.quadraticCurveTo(f.size * 0.72, -f.size * 0.15, 0, f.size);
-      ctx.quadraticCurveTo(-f.size * 0.55, -f.size * 0.15, 0, -f.size);
+      ctx.beginPath();
+      ctx.moveTo(0, s * 0.3);
+      ctx.quadraticCurveTo(-s * 0.36, s * 0.02, -s * 0.3, -s * 0.42);
+      ctx.quadraticCurveTo(-s * 0.24, -s * 0.82, 0, -s * 0.95);
+      ctx.quadraticCurveTo(s * 0.27, -s * 0.78, s * 0.32, -s * 0.36);
+      ctx.quadraticCurveTo(s * 0.33, s * 0.04, 0, s * 0.3);
       ctx.fill();
+      // shaft — runs the length and sticks out below the vane
+      ctx.globalAlpha = 0.42;
+      ctx.strokeStyle = '#e8b45f';
+      ctx.lineWidth = 1.1;
+      ctx.beginPath();
+      ctx.moveTo(0, s * 0.95);
+      ctx.quadraticCurveTo(s * 0.05, 0, 0, -s * 0.9);
+      ctx.stroke();
+      // a few barbs angling up from the shaft
+      ctx.globalAlpha = 0.26;
+      ctx.lineWidth = 0.8;
+      for (const t of [-0.55, -0.2, 0.1]) {
+        ctx.beginPath();
+        ctx.moveTo(0, s * t);
+        ctx.lineTo(-s * 0.26, s * (t + 0.18));
+        ctx.moveTo(0, s * t);
+        ctx.lineTo(s * 0.27, s * (t + 0.15));
+        ctx.stroke();
+      }
+      // split notch near the base — the telltale feather detail
+      ctx.globalAlpha = 0.2;
+      ctx.beginPath();
+      ctx.moveTo(0, s * 0.3);
+      ctx.lineTo(-s * 0.16, s * 0.14);
+      ctx.stroke();
       ctx.restore();
     };
 
@@ -176,7 +212,7 @@ export default function Murmuration() {
         }
         b.x += b.vx * (0.6 + b.depth * 0.7);
         b.y += b.vy * (0.6 + b.depth * 0.7);
-        b.flap += 0.18 + b.depth * 0.12;
+        b.flap += b.flapSp + b.depth * 0.05;
 
         // soft wrap
         if (b.x < -30) b.x = W + 30;

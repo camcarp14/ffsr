@@ -1,12 +1,10 @@
 import { ORG } from '../lib/flock.js';
-import { PerchSitter } from './PerchFlock.jsx';
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="rail footer-grid">
         <div className="footer-brand">
-          <PerchSitter kind="conure" className="perch-art footer-sitter" />
           <img src="/logo-seal.svg" alt="Feathered Friends Sanctuary and Rescue seal" width="84" height="84" />
           <p>
             {ORG.name}
@@ -19,6 +17,7 @@ export default function Footer() {
         <nav className="footer-nav" aria-label="Footer">
           <a href="#/adopt">Adopt</a>
           <a href="#/learn">Learn</a>
+          <a href="#/events">Events</a>
           <a href="#/about">About</a>
           <a href="#/faq">FAQ</a>
           <a href="#/get-involved">Volunteer</a>

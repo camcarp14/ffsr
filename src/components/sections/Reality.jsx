@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { SPECIES } from '../../lib/flock.js';
 import { useReveal, useTween } from '../../lib/motion.js';
 import { FeatherMeter } from '../FeatherMeter.jsx';
-import { PerchHang } from '../PerchFlock.jsx';
 
 /* ============================================================
    REALITY — "what a parrot actually asks of you."
@@ -102,7 +101,6 @@ export default function Reality() {
 
   return (
     <section className="reality" id="reality" ref={ref}>
-      <PerchHang className="perch-art reality-perch" data-reveal="scale" />
       <div className="rail">
         <p className="kicker" data-reveal>
           The honest part, made simple
